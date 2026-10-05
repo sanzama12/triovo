@@ -1,0 +1,1032 @@
+{
+  "majorGroups": [
+    { "id": "cntt", "slug": "cong-nghe-cntt", "name": "Công nghệ & CNTT", "icon": "code", "tone": "primary" },
+    { "id": "kinh-te", "slug": "kinh-te-quan-tri", "name": "Kinh tế & Quản trị", "icon": "chart", "tone": "accent" },
+    { "id": "y-duoc", "slug": "y-duoc-suc-khoe", "name": "Y Dược & Sức khỏe", "icon": "heart", "tone": "danger" },
+    { "id": "ky-thuat", "slug": "ky-thuat-cong-nghe", "name": "Kỹ thuật & Công nghệ", "icon": "gear", "tone": "teal" },
+    { "id": "xa-hoi", "slug": "khoa-hoc-xa-hoi", "name": "Khoa học Xã hội", "icon": "users", "tone": "violet" },
+    { "id": "nghe-thuat", "slug": "nghe-thuat-thiet-ke", "name": "Nghệ thuật & Thiết kế", "icon": "pen", "tone": "pink" },
+    { "id": "giao-duc", "slug": "giao-duc-su-pham", "name": "Giáo dục & Sư phạm", "icon": "book", "tone": "success" },
+    { "id": "nong-lam", "slug": "nong-lam-moi-truong", "name": "Nông Lâm & Môi trường", "icon": "leaf", "tone": "slate" }
+  ],
+
+  "schools": [
+    {
+      "id": "hust", "slug": "dai-hoc-bach-khoa-ha-noi", "code": "BKA",
+      "name": "Đại học Bách khoa Hà Nội", "shortName": "ĐH Bách khoa Hà Nội",
+      "type": "cong-lap", "region": "bac", "city": "Hà Nội",
+      "founded": 1956, "students": 35000, "highlight": "Top 5 Việt Nam",
+      "campuses": ["Cơ sở 1: Số 1 Đại Cồ Việt, Hai Bà Trưng, Hà Nội", "Cơ sở 2: Khu CNC Hòa Lạc, Thạch Thất, Hà Nội"],
+      "website": "https://hust.edu.vn",
+      "description": "Trường đại học kỹ thuật đa ngành hàng đầu, mạnh về công nghệ thông tin, điện – điện tử, cơ khí và khoa học máy tính."
+    },
+    {
+      "id": "neu", "slug": "dai-hoc-kinh-te-quoc-dan", "code": "KHA",
+      "name": "Đại học Kinh tế Quốc dân", "shortName": "ĐH Kinh tế Quốc dân",
+      "type": "cong-lap", "region": "bac", "city": "Hà Nội",
+      "founded": 1956, "students": 30000, "highlight": "Top 3 khối kinh tế",
+      "campuses": ["207 Giải Phóng, Hai Bà Trưng, Hà Nội"],
+      "website": "https://neu.edu.vn",
+      "description": "Trường trọng điểm về kinh tế, quản lý và quản trị kinh doanh với nhiều chương trình tiên tiến giảng dạy bằng tiếng Anh."
+    },
+    {
+      "id": "ftu", "slug": "truong-dai-hoc-ngoai-thuong", "code": "NTH",
+      "name": "Trường Đại học Ngoại thương", "shortName": "ĐH Ngoại thương",
+      "type": "cong-lap", "region": "bac", "city": "Hà Nội",
+      "founded": 1960, "students": 18000, "highlight": "Top 1 khối kinh tế đối ngoại",
+      "campuses": ["91 Chùa Láng, Đống Đa, Hà Nội", "Cơ sở II: 15 D5, Bình Thạnh, TP. Hồ Chí Minh"],
+      "website": "https://ftu.edu.vn",
+      "description": "Đào tạo kinh tế đối ngoại, kinh doanh quốc tế, tài chính và luật thương mại quốc tế."
+    },
+    {
+      "id": "uet", "slug": "truong-dai-hoc-cong-nghe-dhqghn", "code": "QHI",
+      "name": "Trường Đại học Công nghệ – ĐHQGHN", "shortName": "ĐH Công nghệ – ĐHQGHN",
+      "type": "cong-lap", "region": "bac", "city": "Hà Nội",
+      "founded": 2004, "students": 9000, "highlight": "Top 3 ngành CNTT",
+      "campuses": ["144 Xuân Thủy, Cầu Giấy, Hà Nội"],
+      "website": "https://uet.vnu.edu.vn",
+      "description": "Trường thành viên ĐHQG Hà Nội, định hướng nghiên cứu về công nghệ thông tin, điện tử viễn thông và trí tuệ nhân tạo."
+    },
+    {
+      "id": "hmu", "slug": "truong-dai-hoc-y-ha-noi", "code": "YHB",
+      "name": "Trường Đại học Y Hà Nội", "shortName": "ĐH Y Hà Nội",
+      "type": "cong-lap", "region": "bac", "city": "Hà Nội",
+      "founded": 1902, "students": 12000, "highlight": "Trường y lâu đời nhất",
+      "campuses": ["1 Tôn Thất Tùng, Đống Đa, Hà Nội"],
+      "website": "https://hmu.edu.vn",
+      "description": "Trường y khoa hàng đầu, đào tạo bác sĩ đa khoa, y học cổ truyền, răng hàm mặt và các ngành sức khỏe."
+    },
+    {
+      "id": "hup", "slug": "truong-dai-hoc-duoc-ha-noi", "code": "DKH",
+      "name": "Trường Đại học Dược Hà Nội", "shortName": "ĐH Dược Hà Nội",
+      "type": "cong-lap", "region": "bac", "city": "Hà Nội",
+      "founded": 1961, "students": 5000, "highlight": "Trường dược trọng điểm",
+      "campuses": ["13-15 Lê Thánh Tông, Hoàn Kiếm, Hà Nội"],
+      "website": "https://hup.edu.vn",
+      "description": "Đào tạo dược sĩ và nghiên cứu về dược học, hóa dược, công nghiệp dược."
+    },
+    {
+      "id": "ussh", "slug": "truong-dai-hoc-khxhnv-dhqghn", "code": "QHX",
+      "name": "Trường ĐH Khoa học Xã hội và Nhân văn – ĐHQGHN", "shortName": "ĐH KHXH&NV – ĐHQGHN",
+      "type": "cong-lap", "region": "bac", "city": "Hà Nội",
+      "founded": 1995, "students": 13000, "highlight": "Top khối xã hội nhân văn",
+      "campuses": ["336 Nguyễn Trãi, Thanh Xuân, Hà Nội"],
+      "website": "https://ussh.vnu.edu.vn",
+      "description": "Đào tạo báo chí, truyền thông, quan hệ công chúng, tâm lý học và các ngành khoa học xã hội."
+    },
+    {
+      "id": "hnue", "slug": "truong-dai-hoc-su-pham-ha-noi", "code": "SPH",
+      "name": "Trường Đại học Sư phạm Hà Nội", "shortName": "ĐH Sư phạm Hà Nội",
+      "type": "cong-lap", "region": "bac", "city": "Hà Nội",
+      "founded": 1951, "students": 20000, "highlight": "Trường sư phạm trọng điểm",
+      "campuses": ["136 Xuân Thủy, Cầu Giấy, Hà Nội"],
+      "website": "https://hnue.edu.vn",
+      "description": "Trường sư phạm trọng điểm quốc gia, đào tạo giáo viên và cử nhân khoa học giáo dục."
+    },
+    {
+      "id": "vnua", "slug": "hoc-vien-nong-nghiep-viet-nam", "code": "HVN",
+      "name": "Học viện Nông nghiệp Việt Nam", "shortName": "HV Nông nghiệp VN",
+      "type": "cong-lap", "region": "bac", "city": "Hà Nội",
+      "founded": 1956, "students": 30000, "highlight": "Trọng điểm nông nghiệp",
+      "campuses": ["Trâu Quỳ, Gia Lâm, Hà Nội"],
+      "website": "https://vnua.edu.vn",
+      "description": "Đào tạo nông nghiệp, công nghệ thực phẩm, môi trường và kinh tế nông nghiệp."
+    },
+    {
+      "id": "fpt", "slug": "truong-dai-hoc-fpt", "code": "FPT",
+      "name": "Trường Đại học FPT", "shortName": "ĐH FPT",
+      "type": "tu-thuc", "region": "bac", "city": "Hà Nội, TP.HCM, Đà Nẵng, Cần Thơ, Quy Nhơn",
+      "founded": 2006, "students": 40000, "highlight": "Học kỳ doanh nghiệp",
+      "campuses": ["Khu CNC Hòa Lạc, Thạch Thất, Hà Nội", "Khu CNC, TP. Thủ Đức, TP.HCM"],
+      "website": "https://daihoc.fpt.edu.vn",
+      "description": "Đại học tư thục định hướng ứng dụng, mạnh về phần mềm, AI và thiết kế; có học kỳ thực tập tại doanh nghiệp."
+    },
+    {
+      "id": "vlu", "slug": "truong-dai-hoc-luat-ha-noi", "code": "HLU",
+      "name": "Trường Đại học Luật Hà Nội", "shortName": "ĐH Luật Hà Nội",
+      "type": "cong-lap", "region": "bac", "city": "Hà Nội",
+      "founded": 1979, "students": 12000, "highlight": "Trường luật trọng điểm quốc gia",
+      "campuses": ["87 Nguyễn Chí Thanh, Đống Đa, Hà Nội"],
+      "website": "https://hlu.edu.vn",
+      "description": "Trường chuyên ngành pháp lý hàng đầu, đào tạo luật sư, công chứng viên, kiểm sát viên và chuyên gia pháp chế doanh nghiệp."
+    },
+    {
+      "id": "huce", "slug": "truong-dai-hoc-xay-dung-ha-noi", "code": "XDH",
+      "name": "Trường Đại học Xây dựng Hà Nội", "shortName": "ĐH Xây dựng Hà Nội",
+      "type": "cong-lap", "region": "bac", "city": "Hà Nội",
+      "founded": 1966, "students": 20000, "highlight": "Top đầu khối xây dựng kiến trúc",
+      "campuses": ["55 Giải Phóng, Hai Bà Trưng, Hà Nội"],
+      "website": "https://huce.edu.vn",
+      "description": "Trường kỹ thuật chuyên ngành xây dựng, kiến trúc và quy hoạch đô thị."
+    },
+    {
+      "id": "utc", "slug": "truong-dai-hoc-giao-thong-van-tai", "code": "GTV",
+      "name": "Trường Đại học Giao thông Vận tải", "shortName": "ĐH Giao thông VT",
+      "type": "cong-lap", "region": "bac", "city": "Hà Nội",
+      "founded": 1945, "students": 25000, "highlight": "Trọng điểm giao thông vận tải",
+      "campuses": ["3 Cầu Giấy, Đống Đa, Hà Nội", "Cơ sở 2: 450-451 Lê Văn Việt, TP. Thủ Đức, TP.HCM"],
+      "website": "https://utc.edu.vn",
+      "description": "Đào tạo kỹ sư giao thông, cơ khí ô tô, cầu đường, hàng hải."
+    },
+    {
+      "id": "htmu", "slug": "truong-dai-hoc-thuong-mai", "code": "TMU",
+      "name": "Trường Đại học Thương mại", "shortName": "ĐH Thương mại",
+      "type": "cong-lap", "region": "bac", "city": "Hà Nội",
+      "founded": 1960, "students": 20000, "highlight": "Top khối thương mại – marketing",
+      "campuses": ["79 Hồ Tùng Mậu, Nam Từ Liêm, Hà Nội"],
+      "website": "https://tmu.edu.vn",
+      "description": "Đào tạo về kinh doanh, thương mại, marketing, logistics và thương mại điện tử."
+    },
+    {
+      "id": "hvnh", "slug": "hoc-vien-ngan-hang", "code": "HNB",
+      "name": "Học viện Ngân hàng", "shortName": "HV Ngân hàng",
+      "type": "cong-lap", "region": "bac", "city": "Hà Nội",
+      "founded": 1961, "students": 18000, "highlight": "Chuyên ngành tài chính – ngân hàng",
+      "campuses": ["12 Chùa Bộc, Đống Đa, Hà Nội"],
+      "website": "https://hvnh.edu.vn",
+      "description": "Học viện chuyên đào tạo tài chính, ngân hàng, bảo hiểm."
+    },
+    {
+      "id": "hvtc", "slug": "hoc-vien-tai-chinh", "code": "HVT",
+      "name": "Học viện Tài chính", "shortName": "HV Tài chính",
+      "type": "cong-lap", "region": "bac", "city": "Hà Nội",
+      "founded": 1963, "students": 20000, "highlight": "Chuyên sâu tài chính – kế toán",
+      "campuses": ["Số 58, Lê Văn Hiến, Bắc Từ Liêm, Hà Nội"],
+      "website": "https://hvtc.edu.vn",
+      "description": "Học viện chuyên đào tạo tài chính công, kế toán – kiểm toán, thuế; trực thuộc Bộ Tài chính."
+    },
+    {
+      "id": "ajc", "slug": "hoc-vien-bao-chi-va-tuyen-truyen", "code": "AJC",
+      "name": "Học viện Báo chí và Tuyên truyền", "shortName": "HV Báo chí & TT",
+      "type": "cong-lap", "region": "bac", "city": "Hà Nội",
+      "founded": 1962, "students": 8000, "highlight": "Trường báo chí trọng điểm",
+      "campuses": ["36 Xuân Thủy, Cầu Giấy, Hà Nội"],
+      "website": "https://ajc.edu.vn",
+      "description": "Đào tạo báo chí, truyền thông, quan hệ công chúng và các ngành khoa học chính trị – xã hội."
+    },
+    {
+      "id": "hanu", "slug": "truong-dai-hoc-ha-noi", "code": "HNU",
+      "name": "Trường Đại học Hà Nội", "shortName": "ĐH Hà Nội",
+      "type": "cong-lap", "region": "bac", "city": "Hà Nội",
+      "founded": 1959, "students": 10000, "highlight": "Chuyên ngành ngoại ngữ hàng đầu",
+      "campuses": ["1A Đào Tấn, Ba Đình, Hà Nội"],
+      "website": "https://hanu.edu.vn",
+      "description": "Đào tạo ngoại ngữ đa dạng, dịch thuật và ngôn ngữ học."
+    },
+    {
+      "id": "ute-hn", "slug": "truong-dai-hoc-su-pham-ky-thuat-ha-noi", "code": "SPK",
+      "name": "Trường Đại học Sư phạm Kỹ thuật Hà Nội", "shortName": "ĐH SP Kỹ thuật HN",
+      "type": "cong-lap", "region": "bac", "city": "Hà Nội",
+      "founded": 1966, "students": 15000, "highlight": "Sư phạm kỹ thuật – công nghiệp",
+      "campuses": ["Số 1, Trần Phú, Hà Đông, Hà Nội"],
+      "website": "https://ute.edu.vn",
+      "description": "Đào tạo kỹ sư và giáo viên kỹ thuật, công nghiệp."
+    },
+    {
+      "id": "humg", "slug": "truong-dai-hoc-mo-dia-chat", "code": "MDC",
+      "name": "Trường Đại học Mỏ – Địa chất", "shortName": "ĐH Mỏ – Địa chất",
+      "type": "cong-lap", "region": "bac", "city": "Hà Nội",
+      "founded": 1966, "students": 18000, "highlight": "Chuyên ngành khai khoáng & môi trường",
+      "campuses": ["Phường Đức Thắng, Bắc Từ Liêm, Hà Nội"],
+      "website": "https://humg.edu.vn",
+      "description": "Đào tạo khai thác mỏ, địa chất, dầu khí, xây dựng mỏ, kỹ thuật môi trường và hóa học."
+    },
+    {
+      "id": "vnuf", "slug": "truong-dai-hoc-lam-nghiep-viet-nam", "code": "LNV",
+      "name": "Trường Đại học Lâm nghiệp Việt Nam", "shortName": "ĐH Lâm nghiệp VN",
+      "type": "cong-lap", "region": "bac", "city": "Hà Nội",
+      "founded": 1964, "students": 12000, "highlight": "Trường lâm nghiệp quốc gia",
+      "campuses": ["Xuân Mai, Chương Mỹ, Hà Nội"],
+      "website": "https://vnuf.edu.vn",
+      "description": "Đào tạo lâm nghiệp, quản lý tài nguyên rừng, chế biến lâm sản, quản lý đất đai và môi trường."
+    },
+    {
+      "id": "epu", "slug": "truong-dai-hoc-dien-luc", "code": "EPU",
+      "name": "Trường Đại học Điện lực", "shortName": "ĐH Điện lực",
+      "type": "cong-lap", "region": "bac", "city": "Hà Nội",
+      "founded": 1969, "students": 10000, "highlight": "Chuyên ngành điện – năng lượng",
+      "campuses": ["235 Hoàng Quốc Việt, Bắc Từ Liêm, Hà Nội"],
+      "website": "https://epu.edu.vn",
+      "description": "Đào tạo kỹ sư điện, điện tử, viễn thông và quản lý năng lượng."
+    },
+    {
+      "id": "haui", "slug": "truong-dai-hoc-cong-nghiep-ha-noi", "code": "HAU",
+      "name": "Trường Đại học Công nghiệp Hà Nội", "shortName": "ĐH Công nghiệp HN",
+      "type": "cong-lap", "region": "bac", "city": "Hà Nội",
+      "founded": 1898, "students": 30000, "highlight": "Trường công nghiệp lâu đời nhất",
+      "campuses": ["298 Cầu Diễn, Nam Từ Liêm, Hà Nội"],
+      "website": "https://haui.edu.vn",
+      "description": "Đại học đa ngành kỹ thuật – kinh tế, mạnh về cơ khí, điện, CNTT và quản trị."
+    },
+    {
+      "id": "vnu-ue", "slug": "truong-dai-hoc-kinh-te-dhqghn", "code": "QHD",
+      "name": "Trường Đại học Kinh tế – ĐHQGHN", "shortName": "ĐH Kinh tế – ĐHQGHN",
+      "type": "cong-lap", "region": "bac", "city": "Hà Nội",
+      "founded": 2007, "students": 10000, "highlight": "Thành viên ĐHQG Hà Nội",
+      "campuses": ["144 Xuân Thủy, Cầu Giấy, Hà Nội"],
+      "website": "https://ueb.edu.vn",
+      "description": "Trường thành viên ĐHQGHN, đào tạo kinh tế và kinh doanh theo định hướng nghiên cứu."
+    },
+    {
+      "id": "phenikaa", "slug": "truong-dai-hoc-phenikaa", "code": "PKA",
+      "name": "Trường Đại học Phenikaa", "shortName": "ĐH Phenikaa",
+      "type": "tu-thuc", "region": "bac", "city": "Hà Nội",
+      "founded": 2019, "students": 8000, "highlight": "Đại học tư thục định hướng nghiên cứu",
+      "campuses": ["Yên Nghĩa, Hà Đông, Hà Nội"],
+      "website": "https://phenikaa-uni.edu.vn",
+      "description": "Trường tư thục định hướng nghiên cứu do tập đoàn Phenikaa thành lập."
+    },
+    {
+      "id": "tlu", "slug": "truong-dai-hoc-thang-long", "code": "TLG",
+      "name": "Trường Đại học Thăng Long", "shortName": "ĐH Thăng Long",
+      "type": "tu-thuc", "region": "bac", "city": "Hà Nội",
+      "founded": 1994, "students": 6000, "highlight": "Đại học tư thục lâu đời nhất Việt Nam",
+      "campuses": ["Nghiêm Xuân Yêm, Hoàng Mai, Hà Nội"],
+      "website": "https://thanglong.edu.vn",
+      "description": "Đại học tư thục đầu tiên của Việt Nam, đào tạo kinh tế, CNTT, ngoại ngữ và y tế."
+    },
+
+    {
+      "id": "dut", "slug": "truong-dai-hoc-bach-khoa-dh-da-nang", "code": "DDK",
+      "name": "Trường Đại học Bách khoa – ĐH Đà Nẵng", "shortName": "ĐH Bách khoa Đà Nẵng",
+      "type": "cong-lap", "region": "trung", "city": "Đà Nẵng",
+      "founded": 1975, "students": 14000, "highlight": "Trọng điểm kỹ thuật miền Trung",
+      "campuses": ["54 Nguyễn Lương Bằng, Liên Chiểu, Đà Nẵng"],
+      "website": "https://dut.udn.vn",
+      "description": "Trường kỹ thuật trọng điểm miền Trung, đào tạo CNTT, điện, cơ khí, xây dựng và kiến trúc."
+    },
+    {
+      "id": "ued", "slug": "truong-dai-hoc-su-pham-da-nang", "code": "DHL",
+      "name": "Trường Đại học Sư phạm – ĐH Đà Nẵng", "shortName": "ĐH Sư phạm Đà Nẵng",
+      "type": "cong-lap", "region": "trung", "city": "Đà Nẵng",
+      "founded": 1954, "students": 10000, "highlight": "Trường sư phạm trọng điểm miền Trung",
+      "campuses": ["459 Tôn Đức Thắng, Liên Chiểu, Đà Nẵng"],
+      "website": "https://ued.udn.vn",
+      "description": "Đào tạo giáo viên cho các cấp học; mạnh về sư phạm Toán, Lý, Hóa, Tiếng Anh và Giáo dục mầm non."
+    },
+    {
+      "id": "due", "slug": "truong-dai-hoc-kinh-te-da-nang", "code": "DHK",
+      "name": "Trường Đại học Kinh tế – ĐH Đà Nẵng", "shortName": "ĐH Kinh tế Đà Nẵng",
+      "type": "cong-lap", "region": "trung", "city": "Đà Nẵng",
+      "founded": 1975, "students": 12000, "highlight": "Top kinh tế miền Trung",
+      "campuses": ["71 Ngũ Hành Sơn, Ngũ Hành Sơn, Đà Nẵng"],
+      "website": "https://due.udn.vn",
+      "description": "Đào tạo kinh tế, quản trị kinh doanh, kế toán, tài chính."
+    },
+    {
+      "id": "ufl-dn", "slug": "truong-dai-hoc-ngoai-ngu-da-nang", "code": "DNN",
+      "name": "Trường Đại học Ngoại ngữ – ĐH Đà Nẵng", "shortName": "ĐH Ngoại ngữ Đà Nẵng",
+      "type": "cong-lap", "region": "trung", "city": "Đà Nẵng",
+      "founded": 2002, "students": 5000, "highlight": "Ngoại ngữ hàng đầu miền Trung",
+      "campuses": ["131 Lương Nhữ Hộc, Thanh Khê, Đà Nẵng"],
+      "website": "https://ufl.udn.vn",
+      "description": "Đào tạo ngôn ngữ Anh, Pháp, Nhật, Hàn, Trung; phiên dịch và du lịch – lữ hành."
+    },
+    {
+      "id": "hue-bk", "slug": "truong-dai-hoc-bach-khoa-hue", "code": "HBK",
+      "name": "Trường Đại học Bách khoa – ĐH Huế", "shortName": "ĐH Bách khoa Huế",
+      "type": "cong-lap", "region": "trung", "city": "Huế",
+      "founded": 1957, "students": 12000, "highlight": "Kỹ thuật trọng điểm miền Trung",
+      "campuses": ["77 Nguyễn Huệ, Phú Nhuận, Huế"],
+      "website": "https://hutech.hueuni.edu.vn",
+      "description": "Đào tạo kỹ thuật đa ngành, mạnh về điện – điện tử, cơ khí, xây dựng và CNTT."
+    },
+    {
+      "id": "husc", "slug": "truong-dai-hoc-khoa-hoc-hue", "code": "HUS",
+      "name": "Trường Đại học Khoa học – ĐH Huế", "shortName": "ĐH Khoa học Huế",
+      "type": "cong-lap", "region": "trung", "city": "Huế",
+      "founded": 1957, "students": 8000, "highlight": "Khoa học cơ bản & công nghệ",
+      "campuses": ["77 Nguyễn Huệ, Phú Nhuận, Huế"],
+      "website": "https://husc.hueuni.edu.vn",
+      "description": "Đào tạo khoa học tự nhiên, CNTT, xã hội học và môi trường."
+    },
+    {
+      "id": "humed", "slug": "truong-dai-hoc-y-duoc-hue", "code": "HYD",
+      "name": "Trường Đại học Y – Dược – ĐH Huế", "shortName": "ĐH Y Dược Huế",
+      "type": "cong-lap", "region": "trung", "city": "Huế",
+      "founded": 1957, "students": 6000, "highlight": "Trường y dược lớn miền Trung",
+      "campuses": ["6 Ngô Quyền, Phú Nhuận, Huế"],
+      "website": "https://huemed-univ.edu.vn",
+      "description": "Đào tạo y khoa, dược học, điều dưỡng, răng hàm mặt."
+    },
+    {
+      "id": "hue-kt", "slug": "truong-dai-hoc-kinh-te-hue", "code": "HKT",
+      "name": "Trường Đại học Kinh tế – ĐH Huế", "shortName": "ĐH Kinh tế Huế",
+      "type": "cong-lap", "region": "trung", "city": "Huế",
+      "founded": 1957, "students": 8000, "highlight": "Kinh tế trọng điểm Bắc Trung Bộ",
+      "campuses": ["100 Phùng Hưng, Thuận Thành, Huế"],
+      "website": "https://hce.hueuni.edu.vn",
+      "description": "Đào tạo kinh tế, quản trị, kế toán và thương mại."
+    },
+    {
+      "id": "huaf", "slug": "truong-dai-hoc-nong-lam-hue", "code": "HNL",
+      "name": "Trường Đại học Nông Lâm – ĐH Huế", "shortName": "ĐH Nông Lâm Huế",
+      "type": "cong-lap", "region": "trung", "city": "Huế",
+      "founded": 1957, "students": 8000, "highlight": "Nông lâm trọng điểm miền Trung",
+      "campuses": ["102 Phùng Hưng, Thuận Thành, Huế"],
+      "website": "https://huaf.hueuni.edu.vn",
+      "description": "Đào tạo nông nghiệp, lâm nghiệp, thủy sản, thú y và phát triển nông thôn."
+    },
+    {
+      "id": "qnu", "slug": "truong-dai-hoc-quy-nhon", "code": "QNI",
+      "name": "Trường Đại học Quy Nhơn", "shortName": "ĐH Quy Nhơn",
+      "type": "cong-lap", "region": "trung", "city": "Quy Nhơn",
+      "founded": 1977, "students": 10000, "highlight": "Trường đa ngành tại Nam Trung Bộ",
+      "campuses": ["170 An Dương Vương, Quy Nhơn, Bình Định"],
+      "website": "https://qnu.edu.vn",
+      "description": "Đào tạo đa ngành: sư phạm, kỹ thuật, kinh tế, xã hội."
+    },
+    {
+      "id": "ntu", "slug": "truong-dai-hoc-nha-trang", "code": "NTS",
+      "name": "Trường Đại học Nha Trang", "shortName": "ĐH Nha Trang",
+      "type": "cong-lap", "region": "trung", "city": "Nha Trang",
+      "founded": 1959, "students": 12000, "highlight": "Top ngành thủy sản – hải sản",
+      "campuses": ["02 Nguyễn Đình Chiểu, Nha Trang, Khánh Hòa"],
+      "website": "https://ntu.edu.vn",
+      "description": "Đào tạo thủy sản, công nghệ thực phẩm, cơ khí, kinh tế."
+    },
+
+    {
+      "id": "rmit", "slug": "dai-hoc-rmit-viet-nam", "code": "RMU",
+      "name": "Đại học RMIT Việt Nam", "shortName": "ĐH RMIT Việt Nam",
+      "type": "quoc-te", "region": "nam", "city": "TP. Hồ Chí Minh, Hà Nội",
+      "founded": 2001, "students": 9000, "highlight": "Bằng cấp quốc tế (Úc)",
+      "campuses": ["702 Nguyễn Văn Linh, Quận 7, TP.HCM", "521 Kim Mã, Ba Đình, Hà Nội"],
+      "website": "https://rmit.edu.vn",
+      "description": "Đại học quốc tế, giảng dạy hoàn toàn bằng tiếng Anh; xét tuyển bằng học bạ và chứng chỉ tiếng Anh."
+    },
+    {
+      "id": "ueh", "slug": "dai-hoc-kinh-te-tphcm", "code": "KSA",
+      "name": "Đại học Kinh tế TP. Hồ Chí Minh", "shortName": "ĐH Kinh tế TP.HCM",
+      "type": "cong-lap", "region": "nam", "city": "TP. Hồ Chí Minh",
+      "founded": 1976, "students": 32000, "highlight": "Top khối kinh tế phía Nam",
+      "campuses": ["59C Nguyễn Đình Chiểu, Quận 3, TP.HCM"],
+      "website": "https://ueh.edu.vn",
+      "description": "Đại học đa ngành về kinh tế, kinh doanh, công nghệ và thiết kế."
+    },
+    {
+      "id": "hcmus", "slug": "truong-dai-hoc-khtn-dhqg-hcm", "code": "QST",
+      "name": "Trường ĐH Khoa học Tự nhiên – ĐHQG-HCM", "shortName": "ĐH KHTN TP.HCM",
+      "type": "cong-lap", "region": "nam", "city": "TP. Hồ Chí Minh",
+      "founded": 1996, "students": 20000, "highlight": "Mạnh về khoa học máy tính",
+      "campuses": ["227 Nguyễn Văn Cừ, Quận 5, TP.HCM", "Khu đô thị ĐHQG, TP. Thủ Đức"],
+      "website": "https://hcmus.edu.vn",
+      "description": "Đào tạo khoa học cơ bản và công nghệ: khoa học máy tính, CNTT, môi trường, sinh học."
+    },
+    {
+      "id": "tdtu", "slug": "truong-dai-hoc-ton-duc-thang", "code": "DTT",
+      "name": "Trường Đại học Tôn Đức Thắng", "shortName": "ĐH Tôn Đức Thắng",
+      "type": "cong-lap", "region": "nam", "city": "TP. Hồ Chí Minh",
+      "founded": 1997, "students": 25000, "highlight": "Tự chủ tài chính",
+      "campuses": ["19 Nguyễn Hữu Thọ, Quận 7, TP.HCM"],
+      "website": "https://tdtu.edu.vn",
+      "description": "Trường công lập tự chủ, đào tạo đa ngành: luật, thiết kế, môi trường, kỹ thuật."
+    },
+    {
+      "id": "ctu", "slug": "truong-dai-hoc-can-tho", "code": "TCT",
+      "name": "Trường Đại học Cần Thơ", "shortName": "ĐH Cần Thơ",
+      "type": "cong-lap", "region": "nam", "city": "Cần Thơ",
+      "founded": 1966, "students": 40000, "highlight": "Trọng điểm ĐBSCL",
+      "campuses": ["Khu II, đường 3/2, Ninh Kiều, Cần Thơ"],
+      "website": "https://ctu.edu.vn",
+      "description": "Trường đại học trọng điểm vùng Đồng bằng sông Cửu Long, đa ngành, mạnh về nông nghiệp và sư phạm."
+    },
+    {
+      "id": "hcmut", "slug": "truong-dai-hoc-bach-khoa-dhqg-hcm", "code": "BKU",
+      "name": "Trường Đại học Bách khoa – ĐHQG-HCM", "shortName": "ĐH Bách khoa TP.HCM",
+      "type": "cong-lap", "region": "nam", "city": "TP.HCM",
+      "founded": 1957, "students": 25000, "highlight": "Top kỹ thuật phía Nam",
+      "campuses": ["268 Lý Thường Kiệt, Quận 10, TP.HCM", "Khu đô thị ĐHQG, TP. Thủ Đức"],
+      "website": "https://hcmut.edu.vn",
+      "description": "Trường kỹ thuật hàng đầu phía Nam thuộc ĐHQG TP.HCM."
+    },
+    {
+      "id": "hcmup", "slug": "truong-dai-hoc-su-pham-tphcm", "code": "SPH",
+      "name": "Trường Đại học Sư phạm TP. Hồ Chí Minh", "shortName": "ĐH Sư phạm TP.HCM",
+      "type": "cong-lap", "region": "nam", "city": "TP.HCM",
+      "founded": 1976, "students": 20000, "highlight": "Top sư phạm phía Nam",
+      "campuses": ["280 An Dương Vương, Quận 5, TP.HCM"],
+      "website": "https://hcmue.edu.vn",
+      "description": "Trường sư phạm trọng điểm phía Nam."
+    },
+    {
+      "id": "hcmute", "slug": "truong-dai-hoc-su-pham-ky-thuat-tphcm", "code": "SUH",
+      "name": "Trường Đại học Sư phạm Kỹ thuật TP. Hồ Chí Minh", "shortName": "ĐH SP Kỹ thuật TP.HCM",
+      "type": "cong-lap", "region": "nam", "city": "TP.HCM",
+      "founded": 1962, "students": 18000, "highlight": "Top kỹ thuật ứng dụng phía Nam",
+      "campuses": ["1 Võ Văn Ngân, TP. Thủ Đức, TP.HCM"],
+      "website": "https://hcmute.edu.vn",
+      "description": "Đào tạo kỹ sư kỹ thuật, sư phạm kỹ thuật và thiết kế."
+    },
+    {
+      "id": "nlu", "slug": "truong-dai-hoc-nong-lam-tphcm", "code": "NLU",
+      "name": "Trường Đại học Nông Lâm TP. Hồ Chí Minh", "shortName": "ĐH Nông Lâm TP.HCM",
+      "type": "cong-lap", "region": "nam", "city": "TP.HCM",
+      "founded": 1955, "students": 20000, "highlight": "Top nông – lâm – thủy sản phía Nam",
+      "campuses": ["Khu phố 6, Linh Trung, TP. Thủ Đức, TP.HCM"],
+      "website": "https://hcmuaf.edu.vn",
+      "description": "Đào tạo nông nghiệp, lâm nghiệp, thú y, thủy sản, công nghệ thực phẩm và quản lý đất đai."
+    },
+    {
+      "id": "uah", "slug": "truong-dai-hoc-kien-truc-tphcm", "code": "KTR",
+      "name": "Trường Đại học Kiến trúc TP. Hồ Chí Minh", "shortName": "ĐH Kiến trúc TP.HCM",
+      "type": "cong-lap", "region": "nam", "city": "TP.HCM",
+      "founded": 1976, "students": 8000, "highlight": "Trường kiến trúc hàng đầu phía Nam",
+      "campuses": ["196 Pasteur, Quận 3, TP.HCM"],
+      "website": "https://uah.edu.vn",
+      "description": "Đào tạo kiến trúc, quy hoạch đô thị, thiết kế nội thất và kỹ thuật xây dựng."
+    },
+    {
+      "id": "hcmulaw", "slug": "truong-dai-hoc-luat-tphcm", "code": "QTL",
+      "name": "Trường Đại học Luật TP. Hồ Chí Minh", "shortName": "ĐH Luật TP.HCM",
+      "type": "cong-lap", "region": "nam", "city": "TP.HCM",
+      "founded": 1996, "students": 15000, "highlight": "Trường luật trọng điểm phía Nam",
+      "campuses": ["2 Nguyễn Tất Thành, Quận 4, TP.HCM"],
+      "website": "https://hcmulaw.edu.vn",
+      "description": "Đào tạo luật kinh tế, luật dân sự, luật quốc tế."
+    },
+    {
+      "id": "ump", "slug": "truong-dai-hoc-y-duoc-tphcm", "code": "YDU",
+      "name": "Trường Đại học Y Dược TP. Hồ Chí Minh", "shortName": "ĐH Y Dược TP.HCM",
+      "type": "cong-lap", "region": "nam", "city": "TP.HCM",
+      "founded": 1947, "students": 10000, "highlight": "Trường y dược lâu đời nhất phía Nam",
+      "campuses": ["217 Hồng Bàng, Quận 5, TP.HCM"],
+      "website": "https://ump.edu.vn",
+      "description": "Đào tạo y khoa, dược học, điều dưỡng, răng hàm mặt và kỹ thuật y học."
+    },
+    {
+      "id": "ou", "slug": "truong-dai-hoc-mo-tphcm", "code": "MHO",
+      "name": "Trường Đại học Mở TP. Hồ Chí Minh", "shortName": "ĐH Mở TP.HCM",
+      "type": "cong-lap", "region": "nam", "city": "TP.HCM",
+      "founded": 1990, "students": 30000, "highlight": "Đào tạo từ xa lớn nhất phía Nam",
+      "campuses": ["97 Võ Văn Tần, Quận 3, TP.HCM"],
+      "website": "https://ou.edu.vn",
+      "description": "Đại học công lập đào tạo chính quy và từ xa; đa dạng ngành học, học phí thấp."
+    },
+    {
+      "id": "vnuhcm-uit", "slug": "truong-dai-hoc-cong-nghe-thong-tin-dhqg-hcm", "code": "QTK",
+      "name": "Trường Đại học Công nghệ Thông tin – ĐHQG-HCM", "shortName": "ĐH CNTT TP.HCM",
+      "type": "cong-lap", "region": "nam", "city": "TP.HCM",
+      "founded": 2006, "students": 8000, "highlight": "Top CNTT phía Nam",
+      "campuses": ["Khu đô thị ĐHQG, TP. Thủ Đức, TP.HCM"],
+      "website": "https://uit.edu.vn",
+      "description": "Trường chuyên CNTT thuộc ĐHQG TP.HCM; đào tạo kỹ thuật phần mềm, khoa học máy tính, an toàn thông tin."
+    },
+    {
+      "id": "uel", "slug": "truong-dai-hoc-kinh-te-luat-dhqg-hcm", "code": "QSL",
+      "name": "Trường Đại học Kinh tế – Luật – ĐHQG-HCM", "shortName": "ĐH Kinh tế – Luật TP.HCM",
+      "type": "cong-lap", "region": "nam", "city": "TP.HCM",
+      "founded": 2000, "students": 10000, "highlight": "Kinh tế – Luật trọng điểm phía Nam",
+      "campuses": ["Khu đô thị ĐHQG, TP. Thủ Đức, TP.HCM"],
+      "website": "https://uel.edu.vn",
+      "description": "Trường thành viên ĐHQG TP.HCM đào tạo kinh tế, luật kinh doanh và quản trị."
+    },
+    {
+      "id": "hcmiu", "slug": "truong-dai-hoc-quoc-te-dhqg-hcm", "code": "IUH",
+      "name": "Trường Đại học Quốc tế – ĐHQG-HCM", "shortName": "ĐH Quốc tế TP.HCM",
+      "type": "quoc-te", "region": "nam", "city": "TP.HCM",
+      "founded": 2003, "students": 6000, "highlight": "Giảng dạy hoàn toàn bằng tiếng Anh",
+      "campuses": ["Khu đô thị ĐHQG, TP. Thủ Đức, TP.HCM"],
+      "website": "https://hcmiu.edu.vn",
+      "description": "Trường quốc tế thuộc ĐHQG TP.HCM; toàn bộ chương trình giảng dạy bằng tiếng Anh."
+    },
+    {
+      "id": "iuh", "slug": "truong-dai-hoc-cong-nghiep-tphcm", "code": "DHI",
+      "name": "Trường Đại học Công nghiệp TP. Hồ Chí Minh", "shortName": "ĐH Công nghiệp TP.HCM",
+      "type": "cong-lap", "region": "nam", "city": "TP.HCM",
+      "founded": 1996, "students": 25000, "highlight": "Trường công nghiệp lớn phía Nam",
+      "campuses": ["12 Nguyễn Văn Bảo, Gò Vấp, TP.HCM"],
+      "website": "https://iuh.edu.vn",
+      "description": "Đại học đa ngành kỹ thuật – kinh tế – công nghệ."
+    },
+    {
+      "id": "vanlang", "slug": "truong-dai-hoc-van-lang", "code": "VLG",
+      "name": "Trường Đại học Văn Lang", "shortName": "ĐH Văn Lang",
+      "type": "tu-thuc", "region": "nam", "city": "TP.HCM",
+      "founded": 1995, "students": 30000, "highlight": "Đại học tư thục lớn tại TP.HCM",
+      "campuses": ["45 Nguyễn Khắc Nhu, Quận 1, TP.HCM"],
+      "website": "https://vanlanguni.edu.vn",
+      "description": "Đào tạo đa ngành: y – dược, kiến trúc, kỹ thuật, thiết kế, kinh tế và CNTT."
+    },
+    {
+      "id": "hutech", "slug": "truong-dai-hoc-hutech", "code": "HTC",
+      "name": "Trường Đại học HUTECH", "shortName": "ĐH HUTECH",
+      "type": "tu-thuc", "region": "nam", "city": "TP.HCM",
+      "founded": 1995, "students": 25000, "highlight": "Tư thục năng động tại TP.HCM",
+      "campuses": ["475A Điện Biên Phủ, Bình Thạnh, TP.HCM"],
+      "website": "https://hutech.edu.vn",
+      "description": "Đào tạo kỹ thuật, công nghệ, kinh tế và ngôn ngữ."
+    },
+    {
+      "id": "hoasen", "slug": "truong-dai-hoc-hoa-sen", "code": "HOS",
+      "name": "Trường Đại học Hoa Sen", "shortName": "ĐH Hoa Sen",
+      "type": "tu-thuc", "region": "nam", "city": "TP.HCM",
+      "founded": 1991, "students": 8000, "highlight": "Học theo học chế tín chỉ linh hoạt",
+      "campuses": ["8 Nguyễn Văn Tráng, Quận 1, TP.HCM"],
+      "website": "https://hoasen.edu.vn",
+      "description": "Đào tạo du lịch, thiết kế, kinh doanh và ngôn ngữ."
+    },
+    {
+      "id": "ntt", "slug": "truong-dai-hoc-nguyen-tat-thanh", "code": "NTT",
+      "name": "Trường Đại học Nguyễn Tất Thành", "shortName": "ĐH Nguyễn Tất Thành",
+      "type": "tu-thuc", "region": "nam", "city": "TP.HCM",
+      "founded": 1999, "students": 30000, "highlight": "Đa ngành, học phí hợp lý",
+      "campuses": ["300A Nguyễn Tất Thành, Quận 4, TP.HCM"],
+      "website": "https://ntt.edu.vn",
+      "description": "Đào tạo y dược, kỹ thuật, kinh tế, du lịch và ngôn ngữ."
+    },
+    {
+      "id": "dlu", "slug": "truong-dai-hoc-da-lat", "code": "DLU",
+      "name": "Trường Đại học Đà Lạt", "shortName": "ĐH Đà Lạt",
+      "type": "cong-lap", "region": "nam", "city": "Đà Lạt",
+      "founded": 1958, "students": 10000, "highlight": "Đại học vùng Tây Nguyên",
+      "campuses": ["1 Phù Đổng Thiên Vương, Đà Lạt, Lâm Đồng"],
+      "website": "https://dlu.edu.vn",
+      "description": "Trường đa ngành: luật, CNTT, kinh tế, nông nghiệp và du lịch."
+    },
+    {
+      "id": "tvu", "slug": "truong-dai-hoc-tra-vinh", "code": "TVU",
+      "name": "Trường Đại học Trà Vinh", "shortName": "ĐH Trà Vinh",
+      "type": "cong-lap", "region": "nam", "city": "Trà Vinh",
+      "founded": 2006, "students": 8000, "highlight": "Trường ĐH dân tộc Khmer phía Nam",
+      "campuses": ["126 Nguyễn Thiện Thành, Trà Vinh"],
+      "website": "https://tvu.edu.vn",
+      "description": "Đào tạo đa ngành phục vụ vùng ĐBSCL; chú trọng ngôn ngữ và văn hóa Khmer."
+    },
+    {
+      "id": "tgu", "slug": "truong-dai-hoc-tien-giang", "code": "TGU",
+      "name": "Trường Đại học Tiền Giang", "shortName": "ĐH Tiền Giang",
+      "type": "cong-lap", "region": "nam", "city": "Tiền Giang",
+      "founded": 2003, "students": 5000, "highlight": "Đại học vùng Tiền Giang",
+      "campuses": ["119 Ấp Bắc, TP. Mỹ Tho, Tiền Giang"],
+      "website": "https://tgu.edu.vn",
+      "description": "Đào tạo đa ngành phục vụ vùng ĐBSCL."
+    },
+    {
+      "id": "vgu", "slug": "truong-dai-hoc-viet-duc", "code": "VGU",
+      "name": "Trường Đại học Việt – Đức (VGU)", "shortName": "ĐH Việt – Đức",
+      "type": "quoc-te", "region": "nam", "city": "TP.HCM",
+      "founded": 2008, "students": 2000, "highlight": "Đào tạo theo chuẩn Đức",
+      "campuses": ["Khu đô thị mới Bình Dương, TP. Thuận An, Bình Dương"],
+      "website": "https://vgu.edu.vn",
+      "description": "Trường liên kết Việt – Đức; giảng dạy bằng tiếng Anh và Đức."
+    },
+    {
+      "id": "fulbright", "slug": "truong-dai-hoc-fulbright-viet-nam", "code": "FBV",
+      "name": "Trường Đại học Fulbright Việt Nam", "shortName": "ĐH Fulbright VN",
+      "type": "quoc-te", "region": "nam", "city": "TP.HCM",
+      "founded": 2016, "students": 500, "highlight": "Liberal arts đầu tiên tại Việt Nam",
+      "campuses": ["105 Tôn Dật Tiên, Quận 7, TP.HCM"],
+      "website": "https://fulbright.edu.vn",
+      "description": "Đại học khai phóng (liberal arts) đầu tiên tại Việt Nam."
+    },
+    {
+      "id": "vnuhcm-ush", "slug": "truong-dai-hoc-khxhnv-dhqg-hcm", "code": "QSX",
+      "name": "Trường Đại học Khoa học Xã hội & Nhân văn – ĐHQG-HCM", "shortName": "ĐH KHXH&NV TP.HCM",
+      "type": "cong-lap", "region": "nam", "city": "TP.HCM",
+      "founded": 1996, "students": 16000, "highlight": "Top khối xã hội nhân văn phía Nam",
+      "campuses": ["10-12 Đinh Tiên Hoàng, Quận 1, TP.HCM"],
+      "website": "https://hcmussh.edu.vn",
+      "description": "Đào tạo báo chí, tâm lý học, xã hội học, lịch sử, triết học và văn học."
+    }
+  ],
+
+  "majors": [
+    {
+      "id": "cong-nghe-thong-tin", "slug": "cong-nghe-thong-tin", "code": "7480201",
+      "name": "Công nghệ thông tin", "groupId": "cntt",
+      "summary": "Thiết kế, xây dựng và vận hành hệ thống phần mềm, mạng và dữ liệu cho doanh nghiệp.",
+      "demand": "Rất cao", "growth": 15
+    },
+    {
+      "id": "khoa-hoc-may-tinh", "slug": "khoa-hoc-may-tinh", "code": "7480101",
+      "name": "Khoa học máy tính", "groupId": "cntt",
+      "summary": "Nền tảng toán – thuật toán cho phần mềm, trí tuệ nhân tạo và hệ thống thông minh.",
+      "demand": "Rất cao", "growth": 17
+    },
+    {
+      "id": "ky-thuat-phan-mem", "slug": "ky-thuat-phan-mem", "code": "7480103",
+      "name": "Kỹ thuật phần mềm", "groupId": "cntt",
+      "summary": "Quy trình chuyên nghiệp để phát triển, kiểm thử và vận hành phần mềm quy mô lớn.",
+      "demand": "Rất cao", "growth": 14
+    },
+    {
+      "id": "tri-tue-nhan-tao", "slug": "tri-tue-nhan-tao", "code": "7480107",
+      "name": "Trí tuệ nhân tạo", "groupId": "cntt",
+      "summary": "Xây dựng hệ thống học từ dữ liệu: thị giác máy tính, xử lý ngôn ngữ, AI tạo sinh.",
+      "demand": "Rất cao", "growth": 22
+    },
+    {
+      "id": "an-toan-thong-tin", "slug": "an-toan-thong-tin", "code": "7480202",
+      "name": "An toàn thông tin", "groupId": "cntt",
+      "summary": "Bảo vệ hệ thống mạng, dữ liệu và ứng dụng trước các mối đe dọa an ninh mạng.",
+      "demand": "Rất cao", "growth": 20
+    },
+    {
+      "id": "he-thong-thong-tin", "slug": "he-thong-thong-tin", "code": "7480104",
+      "name": "Hệ thống thông tin", "groupId": "cntt",
+      "summary": "Phân tích, thiết kế và triển khai hệ thống thông tin quản lý cho tổ chức.",
+      "demand": "Rất cao", "growth": 16
+    },
+    {
+      "id": "mang-may-tinh", "slug": "mang-may-tinh", "code": "7480102",
+      "name": "Mạng máy tính và Truyền thông dữ liệu", "groupId": "cntt",
+      "summary": "Thiết kế, vận hành hạ tầng mạng và hệ thống truyền thông.",
+      "demand": "Cao", "growth": 12
+    },
+    {
+      "id": "cong-nghe-da-phuong-tien", "slug": "cong-nghe-da-phuong-tien", "code": "7480209",
+      "name": "Công nghệ đa phương tiện", "groupId": "cntt",
+      "summary": "Sản xuất nội dung số: video, đồ họa 3D, animation và thực tế ảo.",
+      "demand": "Cao", "growth": 14
+    },
+    {
+      "id": "cong-nghe-game", "slug": "cong-nghe-game", "code": "7480212",
+      "name": "Công nghệ Game", "groupId": "cntt",
+      "summary": "Thiết kế và lập trình trò chơi điện tử trên đa nền tảng.",
+      "demand": "Cao", "growth": 13
+    },
+    {
+      "id": "khoa-hoc-du-lieu", "slug": "khoa-hoc-du-lieu", "code": "7460156",
+      "name": "Khoa học dữ liệu", "groupId": "cntt",
+      "summary": "Khai thác và phân tích dữ liệu lớn để hỗ trợ ra quyết định kinh doanh.",
+      "demand": "Rất cao", "growth": 19
+    },
+
+    {
+      "id": "marketing", "slug": "marketing", "code": "7340115",
+      "name": "Marketing", "groupId": "kinh-te",
+      "summary": "Nghiên cứu thị trường, xây dựng thương hiệu và thúc đẩy doanh số trên nền tảng số.",
+      "demand": "Cao", "growth": 18
+    },
+    {
+      "id": "quan-tri-kinh-doanh", "slug": "quan-tri-kinh-doanh", "code": "7340101",
+      "name": "Quản trị kinh doanh", "groupId": "kinh-te",
+      "summary": "Điều hành doanh nghiệp: chiến lược, nhân sự, vận hành và tài chính.",
+      "demand": "Cao", "growth": 10
+    },
+    {
+      "id": "kinh-doanh-quoc-te", "slug": "kinh-doanh-quoc-te", "code": "7340120",
+      "name": "Kinh doanh quốc tế", "groupId": "kinh-te",
+      "summary": "Xuất nhập khẩu, logistics và đàm phán thương mại với đối tác nước ngoài.",
+      "demand": "Cao", "growth": 12
+    },
+    {
+      "id": "tai-chinh-ngan-hang", "slug": "tai-chinh-ngan-hang", "code": "7340201",
+      "name": "Tài chính – Ngân hàng", "groupId": "kinh-te",
+      "summary": "Quản lý dòng tiền, đầu tư, tín dụng và nghiệp vụ ngân hàng.",
+      "demand": "Cao", "growth": 8
+    },
+    {
+      "id": "ke-toan", "slug": "ke-toan", "code": "7340301",
+      "name": "Kế toán", "groupId": "kinh-te",
+      "summary": "Ghi nhận, phân tích số liệu tài chính và lập báo cáo cho doanh nghiệp.",
+      "demand": "Cao", "growth": 6
+    },
+    {
+      "id": "quan-tri-du-lich", "slug": "quan-tri-du-lich", "code": "7810103",
+      "name": "Quản trị dịch vụ du lịch và lữ hành", "groupId": "kinh-te",
+      "summary": "Thiết kế tour, vận hành dịch vụ du lịch và trải nghiệm khách hàng.",
+      "demand": "Trung bình", "growth": 9
+    },
+    {
+      "id": "kinh-te-hoc", "slug": "kinh-te-hoc", "code": "7310101",
+      "name": "Kinh tế học", "groupId": "kinh-te",
+      "summary": "Phân tích quy luật thị trường, chính sách kinh tế và hành vi ra quyết định.",
+      "demand": "Cao", "growth": 8
+    },
+    {
+      "id": "kinh-doanh-thuong-mai", "slug": "kinh-doanh-thuong-mai", "code": "7340107",
+      "name": "Kinh doanh thương mại", "groupId": "kinh-te",
+      "summary": "Phát triển hoạt động mua bán, phân phối và thúc đẩy doanh số.",
+      "demand": "Cao", "growth": 10
+    },
+    {
+      "id": "logistics", "slug": "logistics", "code": "7340122",
+      "name": "Logistics và Quản lý chuỗi cung ứng", "groupId": "kinh-te",
+      "summary": "Tối ưu vận chuyển, kho bãi và dòng chảy hàng hóa từ sản xuất đến tiêu dùng.",
+      "demand": "Rất cao", "growth": 15
+    },
+    {
+      "id": "thuong-mai-dien-tu", "slug": "thuong-mai-dien-tu", "code": "7340122b",
+      "name": "Thương mại điện tử", "groupId": "kinh-te",
+      "summary": "Kinh doanh trực tuyến, tối ưu sàn TMĐT và chiến lược digital commerce.",
+      "demand": "Rất cao", "growth": 18
+    },
+    {
+      "id": "quan-tri-nhan-luc", "slug": "quan-tri-nhan-luc", "code": "7340404",
+      "name": "Quản trị nhân lực", "groupId": "kinh-te",
+      "summary": "Tuyển dụng, đào tạo và phát triển con người trong tổ chức.",
+      "demand": "Cao", "growth": 9
+    },
+    {
+      "id": "bao-hiem", "slug": "bao-hiem", "code": "7340206",
+      "name": "Bảo hiểm", "groupId": "kinh-te",
+      "summary": "Quản lý rủi ro, định phí và nghiệp vụ bảo hiểm nhân thọ và phi nhân thọ.",
+      "demand": "Cao", "growth": 9
+    },
+    {
+      "id": "kiem-toan", "slug": "kiem-toan", "code": "7340302",
+      "name": "Kiểm toán", "groupId": "kinh-te",
+      "summary": "Xác nhận tính trung thực của báo cáo tài chính và kiểm soát nội bộ.",
+      "demand": "Cao", "growth": 7
+    },
+
+    {
+      "id": "y-khoa", "slug": "y-khoa", "code": "7720101",
+      "name": "Y khoa", "groupId": "y-duoc",
+      "summary": "Đào tạo bác sĩ đa khoa: chẩn đoán, điều trị và chăm sóc sức khỏe cộng đồng.",
+      "demand": "Rất cao", "growth": 7
+    },
+    {
+      "id": "duoc-hoc", "slug": "duoc-hoc", "code": "7720201",
+      "name": "Dược học", "groupId": "y-duoc",
+      "summary": "Nghiên cứu, sản xuất, kiểm nghiệm và tư vấn sử dụng thuốc an toàn.",
+      "demand": "Cao", "growth": 8
+    },
+    {
+      "id": "y-hoc-co-truyen", "slug": "y-hoc-co-truyen", "code": "7720102",
+      "name": "Y học cổ truyền", "groupId": "y-duoc",
+      "summary": "Khám và điều trị bằng y học cổ truyền: châm cứu, dược liệu và thuốc nam.",
+      "demand": "Cao", "growth": 8
+    },
+    {
+      "id": "y-te-cong-cong", "slug": "y-te-cong-cong", "code": "7720104",
+      "name": "Y tế công cộng", "groupId": "y-duoc",
+      "summary": "Phòng ngừa dịch bệnh và nâng cao sức khỏe cộng đồng.",
+      "demand": "Cao", "growth": 7
+    },
+    {
+      "id": "dieu-duong", "slug": "dieu-duong", "code": "7720301",
+      "name": "Điều dưỡng", "groupId": "y-duoc",
+      "summary": "Chăm sóc và hỗ trợ điều trị người bệnh tại các cơ sở y tế.",
+      "demand": "Rất cao", "growth": 9
+    },
+    {
+      "id": "rang-ham-mat", "slug": "rang-ham-mat", "code": "7720501",
+      "name": "Răng Hàm Mặt", "groupId": "y-duoc",
+      "summary": "Chẩn đoán và điều trị bệnh lý răng, miệng và hàm mặt.",
+      "demand": "Rất cao", "growth": 11
+    },
+    {
+      "id": "xet-nghiem-y-hoc", "slug": "xet-nghiem-y-hoc", "code": "7720401",
+      "name": "Kỹ thuật xét nghiệm y học", "groupId": "y-duoc",
+      "summary": "Thực hiện và phân tích các xét nghiệm chẩn đoán bệnh.",
+      "demand": "Cao", "growth": 8
+    },
+    {
+      "id": "vat-ly-tri-lieu", "slug": "vat-ly-tri-lieu", "code": "7720602",
+      "name": "Vật lý trị liệu", "groupId": "y-duoc",
+      "summary": "Phục hồi chức năng vận động và giảm đau bằng các phương pháp vật lý.",
+      "demand": "Cao", "growth": 10
+    },
+
+    {
+      "id": "ky-thuat-dien", "slug": "ky-thuat-dien", "code": "7520201",
+      "name": "Kỹ thuật điện", "groupId": "ky-thuat",
+      "summary": "Hệ thống điện, năng lượng tái tạo và tự động hoá công nghiệp.",
+      "demand": "Cao", "growth": 10
+    },
+    {
+      "id": "ky-thuat-co-khi", "slug": "ky-thuat-co-khi", "code": "7520103",
+      "name": "Kỹ thuật cơ khí", "groupId": "ky-thuat",
+      "summary": "Thiết kế, chế tạo máy móc và hệ thống sản xuất.",
+      "demand": "Trung bình", "growth": 6
+    },
+    {
+      "id": "ky-thuat-xay-dung", "slug": "ky-thuat-xay-dung", "code": "7580201",
+      "name": "Kỹ thuật xây dựng", "groupId": "ky-thuat",
+      "summary": "Thiết kế kết cấu, thi công và giám sát công trình dân dụng, công nghiệp.",
+      "demand": "Cao", "growth": 8
+    },
+    {
+      "id": "kien-truc-noi-that", "slug": "kien-truc-noi-that", "code": "7580203",
+      "name": "Thiết kế nội thất", "groupId": "ky-thuat",
+      "summary": "Sáng tạo không gian sống và làm việc tiện nghi, thẩm mỹ.",
+      "demand": "Cao", "growth": 11
+    },
+    {
+      "id": "quy-hoach-do-thi", "slug": "quy-hoach-do-thi", "code": "7580105",
+      "name": "Quy hoạch vùng và đô thị", "groupId": "ky-thuat",
+      "summary": "Lập quy hoạch phát triển đô thị, vùng và hạ tầng bền vững.",
+      "demand": "Trung bình", "growth": 6
+    },
+    {
+      "id": "ky-thuat-hoa-hoc", "slug": "ky-thuat-hoa-hoc", "code": "7520301",
+      "name": "Kỹ thuật hóa học", "groupId": "ky-thuat",
+      "summary": "Thiết kế quy trình sản xuất hóa chất, vật liệu và năng lượng.",
+      "demand": "Trung bình", "growth": 7
+    },
+    {
+      "id": "cong-nghe-sinh-hoc", "slug": "cong-nghe-sinh-hoc", "code": "7420201",
+      "name": "Công nghệ sinh học", "groupId": "ky-thuat",
+      "summary": "Ứng dụng sinh học phân tử vào y tế, nông nghiệp và công nghiệp thực phẩm.",
+      "demand": "Cao", "growth": 10
+    },
+    {
+      "id": "ky-thuat-moi-truong", "slug": "ky-thuat-moi-truong", "code": "7520320",
+      "name": "Kỹ thuật môi trường", "groupId": "ky-thuat",
+      "summary": "Thiết kế hệ thống xử lý nước, khí thải và chất thải rắn.",
+      "demand": "Cao", "growth": 10
+    },
+    {
+      "id": "ky-thuat-co-dien-tu", "slug": "ky-thuat-co-dien-tu", "code": "7520114",
+      "name": "Kỹ thuật cơ điện tử", "groupId": "ky-thuat",
+      "summary": "Tích hợp cơ khí, điện tử và lập trình trong hệ thống tự động hóa hiện đại.",
+      "demand": "Rất cao", "growth": 16
+    },
+    {
+      "id": "ky-thuat-oto", "slug": "ky-thuat-oto", "code": "7520130",
+      "name": "Kỹ thuật ô tô", "groupId": "ky-thuat",
+      "summary": "Thiết kế, chẩn đoán và bảo dưỡng xe ô tô động cơ đốt trong và xe điện.",
+      "demand": "Cao", "growth": 11
+    },
+    {
+      "id": "ky-thuat-dien-tu-vt", "slug": "ky-thuat-dien-tu-vt", "code": "7520207",
+      "name": "Kỹ thuật Điện tử – Viễn thông", "groupId": "ky-thuat",
+      "summary": "Thiết kế mạch điện tử, hệ thống viễn thông và thiết bị nhúng.",
+      "demand": "Cao", "growth": 12
+    },
+
+    {
+      "id": "tam-ly-hoc", "slug": "tam-ly-hoc", "code": "7310401",
+      "name": "Tâm lý học", "groupId": "xa-hoi",
+      "summary": "Hiểu hành vi, cảm xúc con người để tư vấn, trị liệu và phát triển tổ chức.",
+      "demand": "Cao", "growth": 11
+    },
+    {
+      "id": "luat", "slug": "luat", "code": "7380101",
+      "name": "Luật", "groupId": "xa-hoi",
+      "summary": "Nghiên cứu hệ thống pháp luật, tư vấn và bảo vệ quyền lợi hợp pháp.",
+      "demand": "Cao", "growth": 7
+    },
+    {
+      "id": "quan-he-cong-chung", "slug": "quan-he-cong-chung", "code": "7320108",
+      "name": "Quan hệ công chúng", "groupId": "xa-hoi",
+      "summary": "Xây dựng hình ảnh tổ chức, truyền thông sự kiện và xử lý khủng hoảng.",
+      "demand": "Cao", "growth": 13
+    },
+    {
+      "id": "bao-chi", "slug": "bao-chi", "code": "7320101",
+      "name": "Báo chí", "groupId": "xa-hoi",
+      "summary": "Khai thác, sản xuất và phát hành nội dung báo chí đa nền tảng.",
+      "demand": "Trung bình", "growth": 6
+    },
+    {
+      "id": "truyen-thong-da-phuong-tien", "slug": "truyen-thong-da-phuong-tien", "code": "7320108b",
+      "name": "Truyền thông đa phương tiện", "groupId": "xa-hoi",
+      "summary": "Sản xuất nội dung đa nền tảng: video, podcast, social media và branded content.",
+      "demand": "Cao", "growth": 14
+    },
+    {
+      "id": "xa-hoi-hoc", "slug": "xa-hoi-hoc", "code": "7310303",
+      "name": "Xã hội học", "groupId": "xa-hoi",
+      "summary": "Nghiên cứu hành vi xã hội, cấu trúc cộng đồng và biến đổi xã hội.",
+      "demand": "Trung bình", "growth": 5
+    },
+    {
+      "id": "cong-tac-xa-hoi", "slug": "cong-tac-xa-hoi", "code": "7760101",
+      "name": "Công tác xã hội", "groupId": "xa-hoi",
+      "summary": "Hỗ trợ và can thiệp cho các nhóm dễ bị tổn thương trong xã hội.",
+      "demand": "Trung bình", "growth": 5
+    },
+    {
+      "id": "ngoai-ngu-anh", "slug": "ngoai-ngu-anh", "code": "7220201",
+      "name": "Ngôn ngữ Anh", "groupId": "xa-hoi",
+      "summary": "Sử dụng tiếng Anh thành thạo trong giao tiếp, dịch thuật và giảng dạy.",
+      "demand": "Cao", "growth": 8
+    },
+    {
+      "id": "ngoai-ngu-nhat", "slug": "ngoai-ngu-nhat", "code": "7220210",
+      "name": "Ngôn ngữ Nhật", "groupId": "xa-hoi",
+      "summary": "Sử dụng tiếng Nhật chuyên nghiệp trong doanh nghiệp Nhật Bản.",
+      "demand": "Rất cao", "growth": 12
+    },
+    {
+      "id": "ngoai-ngu-han", "slug": "ngoai-ngu-han", "code": "7220212",
+      "name": "Ngôn ngữ Hàn", "groupId": "xa-hoi",
+      "summary": "Giao tiếp và làm việc trong môi trường doanh nghiệp Hàn Quốc.",
+      "demand": "Rất cao", "growth": 13
+    },
+    {
+      "id": "ngoai-ngu-trung", "slug": "ngoai-ngu-trung", "code": "7220204",
+      "name": "Ngôn ngữ Trung", "groupId": "xa-hoi",
+      "summary": "Giao tiếp và kinh doanh với đối tác Trung Quốc, Đài Loan.",
+      "demand": "Cao", "growth": 10
+    },
+    {
+      "id": "quan-he-quoc-te", "slug": "quan-he-quoc-te", "code": "7310601",
+      "name": "Quan hệ quốc tế", "groupId": "xa-hoi",
+      "summary": "Phân tích chính trị quốc tế, ngoại giao và hội nhập kinh tế.",
+      "demand": "Trung bình", "growth": 6
+    },
+
+    {
+      "id": "kien-truc", "slug": "kien-truc", "code": "7580101",
+      "name": "Kiến trúc", "groupId": "nghe-thuat",
+      "summary": "Thiết kế công trình, không gian sống và quy hoạch đô thị.",
+      "demand": "Trung bình", "growth": 5
+    },
+    {
+      "id": "thiet-ke-do-hoa", "slug": "thiet-ke-do-hoa", "code": "7210403",
+      "name": "Thiết kế đồ họa", "groupId": "nghe-thuat",
+      "summary": "Sáng tạo hình ảnh, nhận diện thương hiệu và sản phẩm truyền thông số.",
+      "demand": "Cao", "growth": 12
+    },
+    {
+      "id": "thiet-ke-thoi-trang", "slug": "thiet-ke-thoi-trang", "code": "7210404",
+      "name": "Thiết kế thời trang", "groupId": "nghe-thuat",
+      "summary": "Sáng tạo bộ sưu tập thời trang và sản phẩm dệt may theo xu hướng.",
+      "demand": "Trung bình", "growth": 7
+    },
+    {
+      "id": "dien-anh-truyen-hinh", "slug": "dien-anh-truyen-hinh", "code": "7210402",
+      "name": "Điện ảnh – Truyền hình", "groupId": "nghe-thuat",
+      "summary": "Sản xuất phim điện ảnh, phim truyền hình và nội dung video sáng tạo.",
+      "demand": "Trung bình", "growth": 8
+    },
+    {
+      "id": "am-nhac", "slug": "am-nhac", "code": "7210301",
+      "name": "Âm nhạc", "groupId": "nghe-thuat",
+      "summary": "Biểu diễn, sáng tác và sản xuất âm nhạc chuyên nghiệp.",
+      "demand": "Trung bình", "growth": 5
+    },
+    {
+      "id": "my-thuat", "slug": "my-thuat", "code": "7210101",
+      "name": "Mỹ thuật", "groupId": "nghe-thuat",
+      "summary": "Sáng tác tác phẩm mỹ thuật và ứng dụng nghệ thuật thị giác.",
+      "demand": "Trung bình", "growth": 4
+    },
+
+    {
+      "id": "su-pham-toan", "slug": "su-pham-toan", "code": "7140209",
+      "name": "Sư phạm Toán học", "groupId": "giao-duc",
+      "summary": "Đào tạo giáo viên Toán THCS, THPT với phương pháp dạy học hiện đại.",
+      "demand": "Trung bình", "growth": 4
+    },
+    {
+      "id": "giao-duc-mam-non", "slug": "giao-duc-mam-non", "code": "7140201",
+      "name": "Giáo dục Mầm non", "groupId": "giao-duc",
+      "summary": "Nuôi dưỡng và giáo dục trẻ 0–6 tuổi theo phương pháp khoa học.",
+      "demand": "Cao", "growth": 6
+    },
+    {
+      "id": "giao-duc-tieu-hoc", "slug": "giao-duc-tieu-hoc", "code": "7140202",
+      "name": "Giáo dục Tiểu học", "groupId": "giao-duc",
+      "summary": "Giảng dạy toàn diện các môn học cho học sinh tiểu học.",
+      "demand": "Trung bình", "growth": 4
+    },
+    {
+      "id": "su-pham-ngu-van", "slug": "su-pham-ngu-van", "code": "7140217",
+      "name": "Sư phạm Ngữ văn", "groupId": "giao-duc",
+      "summary": "Giảng dạy Ngữ văn và phát triển năng lực đọc – viết cho học sinh.",
+      "demand": "Trung bình", "growth": 3
+    },
+    {
+      "id": "su-pham-tieng-anh", "slug": "su-pham-tieng-anh", "code": "7140231",
+      "name": "Sư phạm Tiếng Anh", "groupId": "giao-duc",
+      "summary": "Giảng dạy tiếng Anh hiệu quả theo chuẩn quốc tế.",
+      "demand": "Rất cao", "growth": 10
+    },
+    {
+      "id": "su-pham-lich-su", "slug": "su-pham-lich-su", "code": "7140218",
+      "name": "Sư phạm Lịch sử", "groupId": "giao-duc",
+      "summary": "Giảng dạy Lịch sử và giáo dục công dân cho học sinh phổ thông.",
+      "demand": "Thấp", "growth": 2
+    },
+    {
+      "id": "su-pham-vat-ly", "slug": "su-pham-vat-ly", "code": "7140211",
+      "name": "Sư phạm Vật lý", "groupId": "giao-duc",
+      "summary": "Giảng dạy Vật lý theo hướng thực nghiệm và STEM.",
+      "demand": "Trung bình", "growth": 4
+    },
+    {
+      "id": "giao-duc-the-chat", "slug": "giao-duc-the-chat", "code": "7140206",
+      "name": "Giáo dục Thể chất", "groupId": "giao-duc",
+      "summary": "Đào tạo giáo viên thể dục và huấn luyện thể thao.",
+      "demand": "Trung bình", "growth": 3
+    },
+
+    {
+      "id": "cong-nghe-thuc-pham", "slug": "cong-nghe-thuc-pham", "code": "7540101",
+      "name": "Công nghệ thực phẩm", "groupId": "nong-lam",
+      "summary": "Chế biến, bảo quản và kiểm soát chất lượng thực phẩm an toàn.",
+      "demand": "Trung bình", "growth": 7
+    },
+    {
+      "id": "khoa-hoc-moi-truong", "slug": "khoa-hoc-moi-truong", "code": "7440301",
+      "name": "Khoa học môi trường", "groupId": "nong-lam",
+      "summary": "Đánh giá, xử lý ô nhiễm và phát triển bền vững.",
+      "demand": "Trung bình", "growth": 9
+    }
+  ],
+
+  "_meta": {
+    "totalSchools": 61,
+    "totalMajors": 69,
+    "totalMajorGroups": 8,
+    "regions": ["bac", "trung", "nam"],
+    "schoolTypes": ["cong-lap", "tu-thuc", "quoc-te"],
+    "note": "Dữ liệu minh hoạ cho bản demo Trovio. Không dùng để đăng ký nguyện vọng thật."
+  }
+}
