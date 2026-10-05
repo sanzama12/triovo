@@ -1,4 +1,12 @@
-import "dotenv/config";
+import dns from "node:dns";
+try {
+  dns.setServers(["8.8.8.8", "1.1.1.1", "8.8.4.4"]);
+} catch {
+  // Ignore in environments where setting DNS servers is restricted
+}
+import dotenv from "dotenv";
+dotenv.config({ path: ".env.local" });
+dotenv.config();
 import { MongoClient } from "mongodb";
 import { schools } from "../src/data/schools";
 import { majors } from "../src/data/majors";
