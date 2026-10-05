@@ -14,6 +14,7 @@
     "typecheck": "tsc --noEmit",
     "seed:mongo": "tsx scripts/seed-mongo.ts",
     "check:mongo": "tsx scripts/check-mongo.ts",
+    "sync:moet": "tsx scripts/sync-official-moet.ts",
     "test": "tsx --test tests/*.test.ts"
   },
   "dependencies": {

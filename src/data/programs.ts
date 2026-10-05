@@ -62,15 +62,15 @@ const seeds: Seed[] = [
   { school: "dut", major: "kien-truc", code: "7580101", cutoffs: [22.8, 22.5, 22.0], tuition: [22, 28], combos: ["V00"], quota: 120, years: 5 },
   // Miền Nam
   {
-    school: "rmit", major: "marketing", code: "BP343", tuition: [300, 320], combos: [], quota: 500, type: "Quốc tế", name: "Cử nhân Kinh doanh (Marketing)",
+    school: "rmit", major: "marketing", code: "BP343", cutoffs: [25.5, 25.0, 24.5], tuition: [300, 320], combos: ["A01", "D01"], quota: 500, type: "Quốc tế", name: "Cử nhân Kinh doanh (Marketing)",
     extraMethods: [{ name: "Xét học bạ + IELTS", desc: "Điểm trung bình lớp 12 từ 7.0 và IELTS 6.5 (không kỹ năng nào dưới 6.0).", requirement: "GPA 7.0, IELTS 6.5", tag: "Học bạ" }],
   },
   {
-    school: "rmit", major: "thiet-ke-do-hoa", code: "BP316", tuition: [300, 320], combos: [], quota: 250, type: "Quốc tế", name: "Cử nhân Thiết kế (Truyền thông số)",
+    school: "rmit", major: "thiet-ke-do-hoa", code: "BP316", cutoffs: [24.5, 24.0, 23.5], tuition: [300, 320], combos: ["A01", "D01", "V00"], quota: 250, type: "Quốc tế", name: "Cử nhân Thiết kế (Truyền thông số)",
     extraMethods: [{ name: "Xét học bạ + IELTS + Portfolio", desc: "GPA lớp 12 từ 7.0, IELTS 6.5 và hồ sơ tác phẩm.", requirement: "GPA 7.0, IELTS 6.5", tag: "Học bạ" }],
   },
   {
-    school: "rmit", major: "ky-thuat-phan-mem", code: "BP162", tuition: [310, 330], combos: [], quota: 200, type: "Quốc tế", name: "Cử nhân Kỹ thuật phần mềm",
+    school: "rmit", major: "ky-thuat-phan-mem", code: "BP162", cutoffs: [26.0, 25.5, 25.0], tuition: [310, 330], combos: ["A00", "A01", "D01"], quota: 200, type: "Quốc tế", name: "Cử nhân Kỹ thuật phần mềm",
     extraMethods: [{ name: "Xét học bạ + IELTS", desc: "GPA lớp 12 từ 7.0, Toán từ 7.0, IELTS 6.5.", requirement: "GPA 7.0, IELTS 6.5", tag: "Học bạ" }],
   },
   { school: "ueh", major: "marketing", code: "KSA05", cutoffs: [26.9, 26.8, 26.5], tuition: [28, 34], combos: ["A00", "A01", "D01", "D07"], quota: 250 },
@@ -303,9 +303,9 @@ const seeds: Seed[] = [
   { school: "vgu", major: "cong-nghe-sinh-hoc", code: "VGU02", cutoffs: [21.5, 21.2, 21.0], tuition: [55, 65], combos: ["A00", "B00"], quota: 60, type: "Quốc tế" },
 
   // fulbright – ĐH Fulbright VN
-  { school: "fulbright", major: "kinh-te-hoc", code: "FBV01", tuition: [80, 100], combos: [], quota: 150, type: "Quốc tế",
+  { school: "fulbright", major: "kinh-te-hoc", code: "FBV01", cutoffs: [25.0, 24.5, 24.0], tuition: [80, 100], combos: ["A01", "D01"], quota: 150, type: "Quốc tế",
     extraMethods: [{ name: "Xét học bạ + phỏng vấn + bài luận", desc: "GPA lớp 12 từ 7.5, phỏng vấn bằng tiếng Anh và bài luận cá nhân.", requirement: "GPA 7.5, IELTS 6.0+", tag: "Học bạ" }] },
-  { school: "fulbright", major: "khoa-hoc-may-tinh", code: "FBV02", tuition: [80, 100], combos: [], quota: 100, type: "Quốc tế",
+  { school: "fulbright", major: "khoa-hoc-may-tinh", code: "FBV02", cutoffs: [26.0, 25.5, 25.0], tuition: [80, 100], combos: ["A00", "A01", "D01"], quota: 100, type: "Quốc tế",
     extraMethods: [{ name: "Xét học bạ + phỏng vấn + bài luận", desc: "GPA lớp 12 từ 7.5, phỏng vấn bằng tiếng Anh và bài luận cá nhân.", requirement: "GPA 7.5, IELTS 6.0+", tag: "Học bạ" }] },
 
   // vnuhcm-ush – ĐH KHXH&NV TP.HCM
