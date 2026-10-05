@@ -186,6 +186,14 @@ async function main() {
 
   if (PRODUCTION) {
     out.push("\n-- --production: bỏ tài khoản demo và nội dung cộng đồng minh hoạ (mục 8–9).\nCOMMIT;");
+    if (process.argv.includes("--write")) {
+      const { writeFileSync } = await import("node:fs");
+      const { join } = await import("node:path");
+      const dbDir = join(process.cwd(), "database");
+      writeFileSync(join(dbDir, "seed-prod.sql"), out.join("\n") + "\n", "utf-8");
+      console.log(`✅ Đã ghi thành công database/seed-prod.sql (UTF-8)`);
+      return;
+    }
     process.stdout.write(out.join("\n") + "\n");
     return;
   }
@@ -240,6 +248,17 @@ async function main() {
   insert("class_members", ["class_id", "user_id"], seedClasses.flatMap((c) => c.memberIds.filter((m) => userIds.has(m)).map((m) => [c.id, m])));
 
   out.push("\nCOMMIT;");
+  
+  if (process.argv.includes("--write")) {
+    const { writeFileSync } = await import("node:fs");
+    const { join } = await import("node:path");
+    const dbDir = join(process.cwd(), "database");
+    const targetFile = PRODUCTION ? "seed-prod.sql" : "seed.sql";
+    writeFileSync(join(dbDir, targetFile), out.join("\n") + "\n", "utf-8");
+    console.log(`✅ Đã ghi thành công database/${targetFile} (UTF-8)`);
+    return;
+  }
+
   process.stdout.write(out.join("\n") + "\n");
 }
 
