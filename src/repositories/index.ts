@@ -67,7 +67,18 @@ import {
 } from "./mongodb";
 import { isMongoConfigured } from "../lib/mongodb";
 
-const useMongo = () => isMongoConfigured() || process.env.TROVIO_REPO_DRIVER === "mongo";
+const isTesting = () =>
+  process.env.NODE_ENV === "test" ||
+  Boolean(process.env.TROVIO_REPO_PATH) ||
+  Boolean(process.env.TROVIO_DB_FILE) ||
+  process.argv.some((a) => a.includes("test"));
+
+const useMongo = () => {
+  if (isTesting() && process.env.TROVIO_REPO_DRIVER !== "mongo") {
+    return false;
+  }
+  return isMongoConfigured() || process.env.TROVIO_REPO_DRIVER === "mongo";
+};
 
 export const repositories = {
   get schools() {

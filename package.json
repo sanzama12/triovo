@@ -17,7 +17,9 @@
     "sync:moet": "tsx scripts/sync-official-moet.ts",
     "db:export": "tsx scripts/export-sql.ts --write && tsx scripts/export-sql.ts --production --write",
     "db:sync": "tsx scripts/sync-official-moet.ts && tsx scripts/export-sql.ts --write && tsx scripts/export-sql.ts --production --write",
-    "test": "tsx --test tests/*.test.ts"
+    "test": "tsx --test tests/*.test.ts",
+    "validate": "tsc --noEmit && tsx --test tests/*.test.ts",
+    "ship": "tsx scripts/ship.ts"
   },
   "dependencies": {
     "dotenv": "^18.0.5",

@@ -403,5 +403,3 @@ export const programs: Program[] = seeds
     };
   })
   .filter((p): p is Program => p !== null);
-
-console.log(`✓ Generated programs: Total ${programs.length} accredited university & college programs across Vietnam.`);
