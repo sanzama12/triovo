@@ -360,31 +360,35 @@ const baseMethods = (s: Seed, alt: MethodCutoff[]): AdmissionMethod[] => {
   ];
 };
 
-export const programs: Program[] = seeds.map((s) => {
-  const school = schools.find((x) => x.id === s.school)!;
-  const major = majors.find((x) => x.id === s.major)!;
-  const name = s.name ?? major.name;
-  const altCutoffs = altCutoffsOf(s);
-  return {
-    id: `${s.school}-${s.major}`,
-    slug: `${major.slug}-${school.code.toLowerCase()}`,
-    schoolId: s.school,
-    majorId: s.major,
-    name,
-    admissionCode: s.code,
-    trainingType: s.type ?? "Chính quy",
-    campus: school.campuses[s.campus ?? 0],
-    combos: s.combos,
-    cutoffs: s.cutoffs ? [2025, 2024, 2023].map((year, i) => ({ year, score: s.cutoffs![i] })) : [],
-    altCutoffs,
-    tuitionMin: s.tuition[0],
-    tuitionMax: s.tuition[1],
-    durationYears: s.years ?? 4,
-    quota: s.quota,
-    competition: competitionOf(s.cutoffs?.[0], s.quota),
-    methods: [...baseMethods(s, altCutoffs), ...(s.extraMethods ?? [])],
-    overview: `Chương trình ${name} của ${school.name} đào tạo theo định hướng: ${major.summary.charAt(0).toLowerCase()}${major.summary.slice(1)} Sinh viên học lý thuyết nền tảng kết hợp thực hành qua dự án và thực tập tại doanh nghiệp đối tác.`,
-    updatedAt: "2026-09",
-    source: `Đề án tuyển sinh 2026 – ${school.name}`,
-  };
-});
+export const programs: Program[] = seeds
+  .map((s) => {
+    const school = schools.find((x) => x.id === s.school);
+    const major = majors.find((x) => x.id === s.major);
+    if (!school || !major) return null;
+    const name = s.name ?? major.name;
+    const altCutoffs = altCutoffsOf(s);
+    return {
+      id: `${s.school}-${s.major}`,
+      slug: `${major.slug}-${school.code.toLowerCase()}`,
+      schoolId: s.school,
+      majorId: s.major,
+      name,
+      admissionCode: s.code,
+      trainingType: s.type ?? "Chính quy",
+      campus: school.campuses?.[s.campus ?? 0] ?? school.city,
+      combos: s.combos,
+      cutoffs: s.cutoffs ? [2025, 2024, 2023].map((year, i) => ({ year, score: s.cutoffs![i] })) : [],
+      altCutoffs,
+      tuitionMin: s.tuition[0],
+      tuitionMax: s.tuition[1],
+      durationYears: s.years ?? 4,
+      quota: s.quota,
+      competition: competitionOf(s.cutoffs?.[0], s.quota),
+      methods: [...baseMethods(s, altCutoffs), ...(s.extraMethods ?? [])],
+      overview: `Chương trình ${name} của ${school.name} đào tạo theo định hướng: ${major.summary.charAt(0).toLowerCase()}${major.summary.slice(1)} Sinh viên học lý thuyết nền tảng kết hợp thực hành qua dự án và thực tập tại doanh nghiệp đối tác.`,
+      updatedAt: "2026-09",
+      source: `Đề án tuyển sinh 2026 – ${school.name}`,
+    };
+  })
+  .filter((p): p is Program => p !== null);
+

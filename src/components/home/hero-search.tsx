@@ -32,6 +32,8 @@ export interface SearchMajorItem {
   groupId: string;
   groupName?: string;
   programCount?: number;
+  aliases?: string[];
+  specializations?: { name: string; aliases?: string[] }[];
 }
 
 export interface SearchSchoolItem {
@@ -43,7 +45,9 @@ export interface SearchSchoolItem {
   region: "bac" | "trung" | "nam";
   city: string;
   type: "cong-lap" | "tu-thuc" | "quoc-te";
+  level?: "dai-hoc" | "cao-dang" | "hoc-vien";
   highlight?: string;
+  aliases?: string[];
 }
 
 export interface SearchGroupItem {
@@ -137,12 +141,22 @@ export function HeroSearch({ groups, schools, majors, defaultQuery = "", classNa
     if (!q) return null;
 
     const matchedSchools = schools
-      .filter((s) => matchesQuery(q, s.name, s.shortName, s.code, s.city))
-      .slice(0, 6);
+      .filter((s) => matchesQuery(q, s.name, s.shortName, s.code, s.city, s.aliases))
+      .slice(0, 8);
 
     const matchedMajors = majors
-      .filter((m) => matchesQuery(q, m.name, m.code, m.groupName))
-      .slice(0, 6);
+      .filter((m) =>
+        matchesQuery(
+          q,
+          m.name,
+          m.code,
+          m.groupName,
+          m.aliases,
+          m.specializations?.map((sp) => sp.name),
+          m.specializations?.flatMap((sp) => sp.aliases || [])
+        )
+      )
+      .slice(0, 8);
 
     const matchedGroups = groups
       .filter((g) => matchesQuery(q, g.name))
@@ -337,7 +351,7 @@ export function HeroSearch({ groups, schools, majors, defaultQuery = "", classNa
                       <div className="mb-2 flex items-center justify-between text-xs font-semibold text-slate-500 uppercase tracking-wider">
                         <span className="flex items-center gap-1.5">
                           <LuBuilding2 className="size-3.5 text-primary-600" />
-                          Trường đại học ({searchResults.schools.length})
+                          Trường Đại học, Học viện & Cao đẳng ({searchResults.schools.length})
                         </span>
                       </div>
                       <div className="space-y-1">
@@ -353,11 +367,15 @@ export function HeroSearch({ groups, schools, majors, defaultQuery = "", classNa
                                 {school.code || school.shortName.slice(0, 3).toUpperCase()}
                               </span>
                               <div className="min-w-0">
-                                <div className="truncate text-sm font-semibold text-slate-900">
-                                  {school.name}
-                                  <span className="ml-1.5 font-normal text-slate-500">({school.shortName})</span>
+                                <div className="flex items-center gap-2 truncate text-sm font-semibold text-slate-900">
+                                  <span>{school.name}</span>
+                                  <span className="shrink-0 rounded bg-slate-100 px-1.5 py-0.5 text-[10px] font-medium text-slate-600">
+                                    {school.level === "cao-dang" ? "Cao đẳng" : school.level === "hoc-vien" ? "Học viện" : "Đại học"}
+                                  </span>
                                 </div>
                                 <div className="flex items-center gap-2 text-xs text-slate-500">
+                                  <span className="font-medium text-primary-700">({school.shortName})</span>
+                                  <span>•</span>
                                   <span className="flex items-center gap-1">
                                     <LuMapPin className="size-3" /> {school.city}
                                   </span>
@@ -379,7 +397,7 @@ export function HeroSearch({ groups, schools, majors, defaultQuery = "", classNa
                       <div className="mb-2 flex items-center justify-between text-xs font-semibold text-slate-500 uppercase tracking-wider">
                         <span className="flex items-center gap-1.5">
                           <LuGraduationCap className="size-3.5 text-primary-600" />
-                          Ngành đào tạo ({searchResults.majors.length})
+                          Ngành & Chuyên ngành đào tạo ({searchResults.majors.length})
                         </span>
                       </div>
                       <div className="space-y-1">
@@ -390,17 +408,21 @@ export function HeroSearch({ groups, schools, majors, defaultQuery = "", classNa
                             onClick={() => handleSelectMajor(major.slug)}
                             className="flex w-full items-center justify-between gap-3 rounded-xl p-2.5 text-left transition hover:bg-primary-50/60"
                           >
-                            <div className="min-w-0">
-                              <div className="truncate text-sm font-semibold text-slate-900">{major.name}</div>
-                              <div className="flex items-center gap-2 text-xs text-slate-500">
-                                <span className="font-mono bg-slate-100 px-1.5 py-0.5 rounded text-[11px] text-slate-600">
-                                  Mã: {major.code}
+                            <div className="min-w-0 flex-1">
+                              <div className="flex items-center gap-2">
+                                <span className="truncate text-sm font-semibold text-slate-900">{major.name}</span>
+                                <span className="font-mono bg-slate-100 px-1.5 py-0.5 rounded text-[11px] text-slate-600 shrink-0">
+                                  {major.code}
                                 </span>
+                              </div>
+                              <div className="mt-0.5 flex flex-wrap items-center gap-1.5 text-xs text-slate-500">
                                 {major.groupName && (
-                                  <>
-                                    <span>•</span>
-                                    <span>{major.groupName}</span>
-                                  </>
+                                  <span className="text-primary-700 font-medium">{major.groupName}</span>
+                                )}
+                                {major.specializations && major.specializations.length > 0 && (
+                                  <span className="text-[11px] text-slate-400 truncate">
+                                    • Gồm: {major.specializations.slice(0, 3).map((sp) => sp.name).join(", ")}
+                                  </span>
                                 )}
                               </div>
                             </div>

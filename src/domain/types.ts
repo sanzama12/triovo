@@ -29,6 +29,8 @@ export interface Combo {
   subjects: [string, string, string]; // subject ids
 }
 
+export type SchoolLevel = "dai-hoc" | "cao-dang" | "hoc-vien";
+
 export interface School {
   id: string;
   slug: string;
@@ -36,6 +38,7 @@ export interface School {
   name: string;
   shortName: string;
   type: SchoolType;
+  level?: SchoolLevel;
   region: Region;
   city: string;
   campuses: string[];
@@ -45,6 +48,8 @@ export interface School {
   website: string;
   description: string;
   scholarships: string;
+  /** Danh sách từ khoá viết tắt tìm kiếm (VD: ["dhxhnv", "ussh", "qhx"]) */
+  aliases?: string[];
   /** Quản trị viên tạm ẩn (không hiện cho học sinh). */
   hidden?: boolean;
   /** Bản ghi do quản trị viên thêm (không có trong dữ liệu gốc). */
@@ -71,6 +76,13 @@ export interface Career {
   level: "Quản lý & chiến lược" | "Thực thi & chuyên môn";
 }
 
+export interface Specialization {
+  name: string;
+  code?: string;
+  desc?: string;
+  aliases?: string[];
+}
+
 export interface Major {
   id: string;
   slug: string;
@@ -84,6 +96,11 @@ export interface Major {
   careers: Career[];
   demand: "Rất cao" | "Cao" | "Trung bình";
   growth: number; // % tăng trưởng nhu cầu tuyển dụng/năm
+  /** Danh sách từ khoá viết tắt (VD: ["cntt", "it", "cs"]) */
+  aliases?: string[];
+  /** Danh sách chuyên ngành hẹp / chuyên ngành sâu */
+  specializations?: Specialization[];
+  degree?: string;
   hidden?: boolean;
   custom?: boolean;
 }

@@ -63,7 +63,24 @@ function inTuitionRange(p: Program, range: TuitionRange): boolean {
 function applyFilters(views: ProgramView[], f: ProgramFilters): ProgramView[] {
   return views.filter(({ program, school, major }) => {
     if (f.method && f.method !== "thpt" && !cutoffFor(program, f.method)) return false;
-    if (f.q && !matchesQuery(f.q, program.name, major.name, school.name, school.shortName, school.code, program.admissionCode)) return false;
+    if (
+      f.q &&
+      !matchesQuery(
+        f.q,
+        program.name,
+        major?.name,
+        major?.code,
+        school?.name,
+        school?.shortName,
+        school?.code,
+        program.admissionCode,
+        school?.aliases,
+        major?.aliases,
+        major?.specializations?.map((sp) => sp.name),
+        major?.specializations?.flatMap((sp) => sp.aliases || [])
+      )
+    )
+      return false;
     if (f.combos?.length && !program.combos.some((c) => f.combos!.includes(c))) return false;
     if (f.tuition && !inTuitionRange(program, f.tuition)) return false;
     if (f.regions?.length && !f.regions.includes(school.region)) return false;

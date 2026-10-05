@@ -42,25 +42,27 @@ export const norm = (s: string) => ` ${normalizeVi(s).replace(/[^a-z0-9]+/g, " "
 const has = (n: string, phrases: string[]) => phrases.some((p) => n.includes(` ${p} `));
 
 const MAJOR_ALIASES: Record<string, string[]> = {
-  "cong-nghe-thong-tin": ["cntt", "nganh it"],
-  "khoa-hoc-may-tinh": ["khmt", "computer science"],
-  "ky-thuat-phan-mem": ["ktpm", "phan mem", "software"],
-  "tri-tue-nhan-tao": ["nganh ai"],
-  marketing: ["mkt", "tiep thi"],
-  "quan-tri-kinh-doanh": ["qtkd"],
-  "kinh-doanh-quoc-te": ["kdqt"],
-  "tai-chinh-ngan-hang": ["nganh tai chinh", "ngan hang", "tcnh"],
-  "quan-tri-du-lich": ["du lich", "lu hanh"],
-  "y-khoa": ["y da khoa", "bac si"],
-  "duoc-hoc": ["duoc si", "nganh duoc"],
-  "ky-thuat-dien": ["nganh dien"],
-  "ky-thuat-co-khi": ["nganh co khi"],
-  "thiet-ke-do-hoa": ["do hoa", "thiet ke"],
-  "tam-ly-hoc": ["tam ly"],
-  "quan-he-cong-chung": ["pr"],
-  "su-pham-toan": ["su pham"],
-  "cong-nghe-thuc-pham": ["thuc pham"],
-  "khoa-hoc-moi-truong": ["nganh moi truong"],
+  "cong-nghe-thong-tin": ["cntt", "nganh it", "it"],
+  "khoa-hoc-may-tinh": ["khmt", "computer science", "cs"],
+  "ky-thuat-phan-mem": ["ktpm", "phan mem", "software", "se"],
+  "tri-tue-nhan-tao": ["nganh ai", "ai", "ttnt"],
+  marketing: ["mkt", "tiep thi", "marketing"],
+  "quan-tri-kinh-doanh": ["qtkd", "ba"],
+  "kinh-doanh-quoc-te": ["kdqt", "ib"],
+  "tai-chinh-ngan-hang": ["nganh tai chinh", "ngan hang", "tcnh", "tai chinh"],
+  "ke-toan": ["ke toan", "nganh ke toan", "kế toán", "ketoan", "kt"],
+  "quan-tri-du-lich": ["du lich", "lu hanh", "quan tri du lich", "qtdl"],
+  "y-khoa": ["y da khoa", "bac si", "y khoa", "yk"],
+  "duoc-hoc": ["duoc si", "nganh duoc", "duoc hoc", "duoc", "dh"],
+  "ky-thuat-dien": ["nganh dien", "ky thuat dien", "ktd"],
+  "ky-thuat-co-khi": ["nganh co khi", "ky thuat co khi", "ktck"],
+  "thiet-ke-do-hoa": ["do hoa", "thiet ke", "thiet ke do hoa", "tkdh"],
+  "tam-ly-hoc": ["tam ly", "tam ly hoc", "tlh"],
+  luat: ["luat", "nganh luat", "luat hoc", "luat kinh te", "lkt"],
+  "quan-he-cong-chung": ["pr", "quan he cong chung", "qhcc"],
+  "su-pham-toan": ["su pham", "su pham toan", "spt"],
+  "cong-nghe-thuc-pham": ["thuc pham", "cong nghe thuc pham", "cntp"],
+  "khoa-hoc-moi-truong": ["nganh moi truong", "khoa hoc moi truong", "khmt"],
 };
 
 const SCHOOL_ALIASES: Record<string, string[]> = {
@@ -72,7 +74,7 @@ const SCHOOL_ALIASES: Record<string, string[]> = {
   hup: ["duoc ha noi", "hup"],
   ussh: ["nhan van", "ussh", "khoa hoc xa hoi va nhan van"],
   hnue: ["su pham ha noi", "hnue"],
-  vnua: ["hoc vien nong nghiep", "nong nghiep viet nam", "vnua"],
+  vnua: ["hoc vien nong nghiep", "nong nghiep viet nam", "vnua", "hvn"],
   fpt: ["fpt"],
   dut: ["bach khoa da nang", "dut"],
   rmit: ["rmit"],
@@ -105,12 +107,14 @@ async function knowledge(): Promise<Knowledge> {
   const majorIndex: [string, string][] = [];
   for (const m of majors) {
     majorIndex.push([norm(m.name).trim(), m.id]);
-    for (const a of MAJOR_ALIASES[m.id] ?? []) majorIndex.push([a, m.id]);
+    for (const a of MAJOR_ALIASES[m.id] ?? []) majorIndex.push([norm(a).trim(), m.id]);
+    for (const a of m.aliases ?? []) majorIndex.push([norm(a).trim(), m.id]);
   }
   const schoolIndex: [string, string][] = [];
   for (const s of schools) {
     schoolIndex.push([norm(s.name).trim(), s.id], [norm(s.shortName).trim(), s.id]);
-    for (const a of SCHOOL_ALIASES[s.id] ?? []) schoolIndex.push([a, s.id]);
+    for (const a of SCHOOL_ALIASES[s.id] ?? []) schoolIndex.push([norm(a).trim(), s.id]);
+    for (const a of s.aliases ?? []) schoolIndex.push([norm(a).trim(), s.id]);
   }
   // Từ khoá quản trị viên thêm ở /quan-tri/chatbot.
   for (const a of Array.isArray(custom) ? custom : []) (a.kind === "major" ? majorIndex : schoolIndex).push([a.alias, a.targetId]);
@@ -119,10 +123,10 @@ async function knowledge(): Promise<Knowledge> {
 }
 
 /**
- * Viết tắt trùng với từ tiếng Việt thông dụng khi bỏ dấu (VD: "nếu" → "neu"):
+ * Viết tắt trùng với từ tiếng Việt thông dụng khi bỏ dấu (VD: "nếu" → "neu", "ít" -> "it", "tỷ" -> "ty"):
  * chỉ nhận khi người dùng gõ IN HOA trong câu gốc.
  */
-const UPPERCASE_ONLY = new Set(["neu"]);
+const UPPERCASE_ONLY = new Set(["neu", "it", "ty", "dh", "kt", "bh", "dd", "yk", "lkt", "spt", "cntp", "khmt"]);
 
 /** Tìm thực thể có tên/viết tắt DÀI NHẤT khớp theo từ (VD: ưu tiên "kinh doanh quoc te" hơn "kinh doanh"). */
 function findEntity(n: string, index: [string, string][], raw = ""): string | null {

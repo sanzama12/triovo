@@ -38,7 +38,19 @@ export const catalogService = {
     const groupMap = new Map(groups.map((g) => [g.id, g]));
     return majors
       .filter((m) => !opts.group || m.groupId === opts.group)
-      .filter((m) => !opts.q || matchesQuery(opts.q, m.name, m.code, m.summary))
+      .filter(
+        (m) =>
+          !opts.q ||
+          matchesQuery(
+            opts.q,
+            m.name,
+            m.code,
+            m.summary,
+            m.aliases,
+            m.specializations?.map((sp) => sp.name),
+            m.specializations?.flatMap((sp) => sp.aliases || [])
+          )
+      )
       .filter((m) => !opts.letter || firstLetterVi(m.name) === opts.letter)
       .map((major) => ({
         major,

@@ -64,7 +64,9 @@ export default async function HomePage() {
     region: s.region,
     city: s.city,
     type: s.type,
+    level: s.level,
     highlight: s.highlight,
+    aliases: s.aliases,
   }));
 
   const searchMajors = majors.map(({ major, group, programCount }) => ({
@@ -75,6 +77,8 @@ export default async function HomePage() {
     groupId: major.groupId,
     groupName: group?.name,
     programCount,
+    aliases: major.aliases,
+    specializations: major.specializations,
   }));
 
   return (
