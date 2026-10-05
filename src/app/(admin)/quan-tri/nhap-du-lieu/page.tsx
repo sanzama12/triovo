@@ -7,6 +7,8 @@ import { AdminBody, fmtDate, Panel } from "@/components/admin/ui";
 import { ImportManager } from "@/components/admin/import-manager";
 import { buttonClass } from "@/components/ui/button";
 
+import { CronSyncButton } from "@/components/admin/cron-sync-button";
+
 export const metadata: Metadata = { title: "Nhập & Kiểm duyệt dữ liệu", robots: { index: false, follow: false } };
 
 export default async function AdminImportPage() {
@@ -16,6 +18,8 @@ export default async function AdminImportPage() {
     <>
       <AdminHeader title="Nhập & Kiểm duyệt dữ liệu hàng loạt" crumb="Nhập & Kiểm duyệt" updatedAt={history[0]?.at ?? null} />
       <AdminBody>
+        <CronSyncButton />
+
         <div className="flex flex-wrap items-center justify-between gap-3">
           <p className="text-[15px] text-slate-500">Nhập điểm chuẩn, học phí, chỉ tiêu hàng loạt từ file Excel/CSV mẫu của hệ thống.</p>
           <a href="/api/admin/import" download className={buttonClass({ variant: "outline", size: "sm" })}>

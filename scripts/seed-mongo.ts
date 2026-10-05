@@ -104,10 +104,19 @@ async function main() {
   if (schoolOutcomes.length > 0) {
     await db.collection("schoolOutcomes").insertMany(schoolOutcomes.map((o: any) => ({ ...o, _id: o.schoolId })));
   }
-  await db.collection("dataSources").deleteMany({});
-  if (dataSources.length > 0) {
-    await db.collection("dataSources").insertMany(dataSources.map((s: any) => ({ ...s, _id: s.id })));
-  }
+  // 9. Users
+  const { seedUsers } = await import("../src/data/users");
+  const { hashPassword } = await import("../src/services/password.hash");
+  const usersWithHashes = await Promise.all(
+    seedUsers.map(async (u) => {
+      const { password, ...rest } = u;
+      const passwordHash = password ? await hashPassword(password) : null;
+      return { ...rest, passwordHash, _id: u.id };
+    })
+  );
+  await db.collection("users").deleteMany({});
+  await db.collection("users").insertMany(usersWithHashes as any);
+  console.log(`- Đã nạp ${usersWithHashes.length} tài khoản người dùng & admin (admin@trovio.vn / Trovio@2026)`);
 
   // Create indexes for fast queries
   await db.collection("schools").createIndex({ slug: 1 });

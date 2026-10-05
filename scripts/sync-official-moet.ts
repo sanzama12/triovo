@@ -133,6 +133,20 @@ export async function syncOfficialMoetData() {
   await db.collection("dataSources").insertMany(dataSources.map((d) => ({ ...d, _id: d.id } as any)));
   console.log(`  ✓ outcomes & sources: dữ liệu việc làm, mức lương khởi điểm & nguồn số liệu uy tín`);
 
+  // I. Tài khoản quản trị & người dùng mẫu
+  const { seedUsers } = await import("../src/data/users");
+  const { hashPassword } = await import("../src/services/password.hash");
+  const usersWithHashes = await Promise.all(
+    seedUsers.map(async (u) => {
+      const { password, ...rest } = u;
+      const passwordHash = password ? await hashPassword(password) : null;
+      return { ...rest, passwordHash, _id: u.id };
+    })
+  );
+  await db.collection("users").deleteMany({});
+  await db.collection("users").insertMany(usersWithHashes as any);
+  console.log(`  ✓ users: Đã nạp ${usersWithHashes.length} tài khoản vào MongoDB (Tài khoản Admin: admin@trovio.vn / Trovio@2026)`);
+
   // 3. Tối ưu hoá chỉ mục (Indexes)
   console.log("\n⚡ Đang tạo và tối ưu hóa chỉ mục tìm kiếm (Indexes)...");
   try {

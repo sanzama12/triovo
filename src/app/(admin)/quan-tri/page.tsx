@@ -11,6 +11,8 @@ import { DataIssues } from "@/components/admin/data-issues";
 import { SubmissionQueue } from "@/components/admin/submission-queue";
 import { Badge } from "@/components/ui/badge";
 
+import { CronSyncButton } from "@/components/admin/cron-sync-button";
+
 export const metadata: Metadata = { title: "Tổng quan dữ liệu", robots: { index: false, follow: false } };
 
 const DOT: Record<string, string> = { import: "bg-success-500", program: "bg-primary-500", school: "bg-primary-500", rules: "bg-accent-500", user: "bg-accent-500" };
@@ -28,6 +30,8 @@ export default async function AdminOverviewPage() {
     <>
       <AdminHeader title="Tổng quan dữ liệu" crumb="Tổng quan dữ liệu" updatedAt={new Date().toISOString()} search />
       <AdminBody>
+        <CronSyncButton />
+
         <StatGrid>
           <AdminStat label="Tổng trường" value={stats.schools.toLocaleString("vi-VN")} hint={<Link href="/quan-tri/truong" className="font-semibold hover:underline">Quản lý trường ›</Link>} hintTone="success" Icon={LuLandmark} valueTone="primary" />
           <AdminStat label="Tổng chương trình" value={stats.programs.toLocaleString("vi-VN")} hint={`${stats.verifiedPct}% đã xác minh`} Icon={LuCircleCheck} tone="success" valueTone="primary" />
