@@ -13,6 +13,7 @@
     "demo": "next build && TROVIO_DEMO=true next start -p 3000",
     "typecheck": "tsc --noEmit",
     "seed:mongo": "tsx scripts/seed-mongo.ts",
+    "check:mongo": "tsx scripts/check-mongo.ts",
     "test": "tsx --test tests/*.test.ts"
   },
   "dependencies": {
