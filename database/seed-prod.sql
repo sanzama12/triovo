@@ -1,5 +1,5 @@
 -- TỰ ĐỘNG SINH bởi scripts/export-sql.ts từ src/data + src/domain + src/services. Không sửa tay — chạy lại script.
--- Sinh lúc: 2026-10-05T10:04:55.980Z
+-- Sinh lúc: 2026-10-05T10:11:35.651Z
 BEGIN;
 SET search_path TO trovio, public;
 
