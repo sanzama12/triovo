@@ -5,7 +5,7 @@ Toàn bộ dữ liệu web hoạt động trực tiếp trên **MongoDB Atlas** 
 
 | Tệp / Database | Mô tả |
 | :--- | :--- |
-| **MongoDB Atlas** | Database đám mây chính thức của website (61 trường, 53 ngành, 87 chương trình, 60 RIASEC, 28 collections). |
+| **MongoDB Atlas** | Database đám mây chính thức của website (61 trường, 53 ngành, 212 chương trình đào tạo & điểm chuẩn, 60 câu hỏi RIASEC, 28 collections). |
 | `database/schema.sql` | 79 bảng, 4 view, 2 hàm nghiệp vụ, trigger kiểm tra dữ liệu (PostgreSQL schema `trovio`). |
 | `database/seed.sql` | Toàn bộ dữ liệu tuyển sinh, điểm chuẩn nhiều năm, trắc nghiệm RIASEC và tài khoản demo (kèm password băm scrypt). |
 | `database/seed-prod.sql` | Dữ liệu nạp môi trường Production (loại bỏ dữ liệu cộng đồng minh hoạ). |
