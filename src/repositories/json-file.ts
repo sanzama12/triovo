@@ -180,6 +180,15 @@ async function migrate(data: Partial<DbShape>): Promise<boolean> {
     data.seeded = data.users.length ? ["u-001", "u-002"] : [];
     changed = true;
   }
+  // Luôn đảm bảo tài khoản Quản trị viên tồn tại
+  const adminSeed = seedUsers.find((u) => u.id === "u-000");
+  if (adminSeed && !data.users.some((x) => x.email === adminSeed.email)) {
+    data.users.push({
+      ...adminSeed,
+      passwordHash: adminSeed.password ? await hashPassword(adminSeed.password) : null,
+    });
+    changed = true;
+  }
   if (isDemoMode()) {
     for (const { password, ...u } of seedUsers) {
       if (data.seeded.includes(u.id)) continue;

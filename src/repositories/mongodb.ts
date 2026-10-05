@@ -138,6 +138,20 @@ async function ensureSeeded() {
         if (initialSources.length) {
           await db.collection("dataSources").insertMany(initialSources.map((s: any) => ({ ...s, _id: s.id })));
         }
+        // Nạp người dùng & quản trị viên
+        const userCount = await db.collection("users").countDocuments();
+        if (userCount === 0) {
+          const { seedUsers } = await import("../data/users");
+          const { hashPassword } = await import("../services/password.hash");
+          const usersWithHashes = await Promise.all(
+            seedUsers.map(async (u) => {
+              const { password, ...rest } = u;
+              const passwordHash = password ? await hashPassword(password) : null;
+              return { ...rest, passwordHash, _id: u.id };
+            })
+          );
+          await db.collection("users").insertMany(usersWithHashes as any);
+        }
       }
     } catch (err) {
       console.error("MongoDB auto-seed error:", err);
@@ -411,6 +425,7 @@ export const mongoTimelineConfigRepository: TimelineConfigRepository = {
 // ==================== USER & USER DATA REPOSITORY ====================
 export const mongoUserRepository: UserRepository = {
   async findByEmail(email: string): Promise<User | null> {
+    await ensureSeeded();
     const db = await getDb();
     const doc = await db.collection("users").findOne({ email: email.toLowerCase() });
     if (!doc) return null;
@@ -418,6 +433,7 @@ export const mongoUserRepository: UserRepository = {
     return rest as unknown as User;
   },
   async findById(id: string): Promise<User | null> {
+    await ensureSeeded();
     const db = await getDb();
     const doc = await db.collection("users").findOne({ id });
     if (!doc) return null;
@@ -425,6 +441,7 @@ export const mongoUserRepository: UserRepository = {
     return rest as unknown as User;
   },
   async findByGoogleId(googleId: string): Promise<User | null> {
+    await ensureSeeded();
     const db = await getDb();
     const doc = await db.collection("users").findOne({ googleId });
     if (!doc) return null;
@@ -432,6 +449,7 @@ export const mongoUserRepository: UserRepository = {
     return rest as unknown as User;
   },
   async list(): Promise<User[]> {
+    await ensureSeeded();
     const db = await getDb();
     const docs = await db.collection("users").find().toArray();
     return docs.map(({ _id, ...rest }) => rest as unknown as User);
