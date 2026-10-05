@@ -1,5 +1,5 @@
 -- TỰ ĐỘNG SINH bởi scripts/export-sql.ts từ src/data + src/domain + src/services. Không sửa tay — chạy lại script.
--- Sinh lúc: 2026-10-05T09:49:26.428Z
+-- Sinh lúc: 2026-10-05T09:56:31.965Z
 BEGIN;
 SET search_path TO trovio, public;
 
@@ -3524,13 +3524,13 @@ INSERT INTO timeline_events (id, title, start_date, end_date, category, descript
 -- 8. Tài khoản demo (mật khẩu băm scrypt giống web) — CHỈ dùng cho môi trường demo
 -- ================================================================================================
 INSERT INTO users (id, email, name, avatar_url, password_hash, google_id, verified, locked, disabled, failed_attempts, user_role, grad_year, province, under16, parent_consent, onboarded, email_reminders, survey_opt_in, created_at) VALUES
-  ('u-000', 'admin@trovio.vn', 'Quản trị Trovio', NULL, 'scrypt$16384$anx9bx89lopojFYho3cpUg$bIvqz-zv46GoyBR-DNYMEgf4bX0YOpok_qy4tVJmSdnwEGtmUFCcUi-j-Km43yYsQBfEj_liXvbx28DurK0VLw', NULL, true, false, false, 0, NULL, NULL, NULL, false, false, true, false, false, '2026-01-05'),
-  ('u-001', 'an@trovio.vn', 'Nguyễn Văn An', NULL, 'scrypt$16384$jatBxVxz1MH4n8sNnSUuQQ$wH7ldMf5yAYSq2Cgn7UTcT2dfasBKs9721ApfdSJAhv5MZTjjSORWfe8R7fXdVdkJS4bDr_oiWXJp3rIFCMYLw', NULL, true, false, false, 0, 'student', 2027, 'Hà Nội', false, false, true, false, false, '2026-03-10'),
-  ('u-002', 'binh.locked@trovio.vn', 'Trần Thị Bình', NULL, 'scrypt$16384$ZYWO0YTZ2wOYDwUFko_Vgw$Nr2_6sKXrVZjklKnB4wC4jH00TJg-ZmNYLbol9uzKY6zK4rBpJJsuELWowK9LspvYouKsfiZMz-ujsckAjNa3g', NULL, true, true, false, 5, 'student', 2026, 'Đà Nẵng', false, false, true, false, false, '2026-05-02'),
-  ('u-003', 'gv@trovio.vn', 'Phạm Thu Hạnh', NULL, 'scrypt$16384$0UCWvfK63aWm8Zxq1obVQQ$f9KerqYTWHflVUOiKllxXjELKPSmEUyfLA4N1hwim0Z3LHVjLlbueZvGvTK2qwRtZ0YG7ox8gRmwokWL-eVP1g', NULL, true, false, false, 0, 'teacher', NULL, 'Hà Nội', false, false, true, false, false, '2026-08-20'),
-  ('u-004', 'linh@st.neu.edu.vn', 'Lê Thu Linh', NULL, 'scrypt$16384$OFFxTwVKQc-ighzCQddaGA$dWqRtRvouB7PGckzcQCNqmHqM7WaA-4mv0IAJ0xG5MNjncLXVtrgBBYJszLDntlIV9vr0cYHSM0yPZ3qeqzv1A', NULL, true, false, false, 0, 'student', 2025, 'Hà Nội', false, false, true, false, false, '2026-09-01'),
-  ('u-005', 'tuyensinh@neu.edu.vn', 'Phòng Tuyển sinh NEU', NULL, 'scrypt$16384$DlXlRoGk3dEvyus7EgwSGg$Erphu6OYFnS3JQeXIGlCdYXDh0vyo5Q5jOCqqobTt4O8npcHvzFvAumHOlAG7xRPRWsvxfquL-XslnUNBdQMEA', NULL, true, false, false, 0, 'school', NULL, 'Hà Nội', false, false, true, false, false, '2026-09-15'),
-  ('u-006', 'kiemduyet@trovio.vn', 'Đỗ Minh Kiểm', NULL, 'scrypt$16384$i-qvXH6SifbYE7YNXh422g$EH55g0hgYQHDM3aiHyl6-Pei6ICRbLziir3qGHfhJ0EheDF95r5f5sJ4VvF7Nfx9ezzkYJ8JVl2-6zBb2IfXTA', NULL, true, false, false, 0, NULL, NULL, NULL, false, false, true, false, false, '2026-09-20');
+  ('u-000', 'admin@trovio.vn', 'Quản trị Trovio', NULL, 'scrypt$16384$FtzaM9NHFYs7doGqf-92Mg$WV8oxVnn2omrq5VjpOQmjgc_e8FjxdpqC_GjZ8kwwNHuZVXu3xl08o41-PYMYRq_cmYNoAm-MIeifaj6vhynpw', NULL, true, false, false, 0, NULL, NULL, NULL, false, false, true, false, false, '2026-01-05'),
+  ('u-001', 'an@trovio.vn', 'Nguyễn Văn An', NULL, 'scrypt$16384$P4qb89tsOv0raqrTCbwKyQ$kFByP3xcfbMzYi4Mz7xshaIo1YyTQza4iFCNu-j45Jeedpgu5NFzfttXIE87dZxzLjKs7tWtW_pefMjSVUB6ug', NULL, true, false, false, 0, 'student', 2027, 'Hà Nội', false, false, true, false, false, '2026-03-10'),
+  ('u-002', 'binh.locked@trovio.vn', 'Trần Thị Bình', NULL, 'scrypt$16384$C5ZtsdWhFpRvO1qssKeCtQ$2uvj39JERMVxegdyqCpfTaNrBB9N3NLufzJVNEQ38DW2k5QovOx_ECOUbEDiAu_ORHXsYeDst4iwqOoR3gIuRQ', NULL, true, true, false, 5, 'student', 2026, 'Đà Nẵng', false, false, true, false, false, '2026-05-02'),
+  ('u-003', 'gv@trovio.vn', 'Phạm Thu Hạnh', NULL, 'scrypt$16384$S7NUxrBJXrSsKeIojC9vpA$_Ozlzh5Jp3t296AwX7L78C2_t0EO8WNx6L09rzhW-UkQvOImnM73j8ZLC-tqGQ2c4ikoOe2RVPut6cwem2-jBg', NULL, true, false, false, 0, 'teacher', NULL, 'Hà Nội', false, false, true, false, false, '2026-08-20'),
+  ('u-004', 'linh@st.neu.edu.vn', 'Lê Thu Linh', NULL, 'scrypt$16384$8QtE0ilZdFJlH4-ufYdGRg$m-6UTBWueCXEmoeTzpaNGmbBZbmz-v9rsog7KnzhLER8_HXqLZrpqkVl1GAWJLj6FkXwuNNOYdI06avPjG9tyQ', NULL, true, false, false, 0, 'student', 2025, 'Hà Nội', false, false, true, false, false, '2026-09-01'),
+  ('u-005', 'tuyensinh@neu.edu.vn', 'Phòng Tuyển sinh NEU', NULL, 'scrypt$16384$PZPonHGTKmpa6hxmhMvMzA$P4JnAIx-NwTIWUUEKavxA47FyxFsBfsbgJLgDw1lvjnP4yzJaTYkHcV9xCTH0Mb5s4kppU2VOUQC_mb8iQHWkg', NULL, true, false, false, 0, 'school', NULL, 'Hà Nội', false, false, true, false, false, '2026-09-15'),
+  ('u-006', 'kiemduyet@trovio.vn', 'Đỗ Minh Kiểm', NULL, 'scrypt$16384$YfTecpg6NWVj_0liY6vu-g$Kq2czYeppnQUJBL6auo77AD-V2znjazfRv-XSlzvHkTPqGs-L_h9E_gC34bzO-pCNQcdcAkc2XrX40YlaR3EOg', NULL, true, false, false, 0, NULL, NULL, NULL, false, false, true, false, false, '2026-09-20');
 
 INSERT INTO user_system_roles (user_id, role_code) VALUES
   ('u-000', 'admin'),

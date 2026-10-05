@@ -19,7 +19,8 @@
     "db:sync": "tsx scripts/sync-official-moet.ts && tsx scripts/export-sql.ts --write && tsx scripts/export-sql.ts --production --write",
     "test": "tsx --test tests/*.test.ts",
     "validate": "tsc --noEmit && tsx --test tests/*.test.ts",
-    "ship": "tsx scripts/ship.ts"
+    "ship": "tsx scripts/ship.ts",
+    "deploy": "vercel --prod"
   },
   "dependencies": {
     "dotenv": "^18.0.5",
