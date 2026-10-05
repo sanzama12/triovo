@@ -8,6 +8,7 @@
  */
 import { mkdir, readFile, rename, stat, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
+import { tmpdir } from "node:os";
 import { randomUUID } from "node:crypto";
 import { FUNNEL_EVENTS } from "../domain/types";
 import { seedUsers } from "../data/users";
@@ -133,7 +134,13 @@ interface DbShape {
 }
 
 const clone = <T>(v: T): T => structuredClone(v);
-const dbFile = () => process.env.TROVIO_DB_FILE ?? join(process.cwd(), ".data", "trovio-db.json");
+const dbFile = () => {
+  if (process.env.TROVIO_DB_FILE) return process.env.TROVIO_DB_FILE;
+  if (process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME) {
+    return join(tmpdir(), "trovio-db.json");
+  }
+  return join(process.cwd(), ".data", "trovio-db.json");
+};
 
 // Dùng chung giữa các bundle (route handler / server component) và qua hot-reload.
 const g = globalThis as unknown as {
@@ -180,24 +187,14 @@ async function migrate(data: Partial<DbShape>): Promise<boolean> {
     data.seeded = data.users.length ? ["u-001", "u-002"] : [];
     changed = true;
   }
-  // Luôn đảm bảo tài khoản Quản trị viên tồn tại
-  const adminSeed = seedUsers.find((u) => u.id === "u-000");
-  if (adminSeed && !data.users.some((x) => x.email === adminSeed.email)) {
-    data.users.push({
-      ...adminSeed,
-      passwordHash: adminSeed.password ? await hashPassword(adminSeed.password) : null,
-    });
-    changed = true;
-  }
-  if (isDemoMode()) {
-    for (const { password, ...u } of seedUsers) {
-      if (data.seeded.includes(u.id)) continue;
-      if (!data.users.some((x) => x.id === u.id || x.email === u.email)) {
-        data.users.push({ ...u, passwordHash: password ? await hashPassword(password) : null });
-      }
-      data.seeded.push(u.id);
+  // Luôn đảm bảo tài khoản người dùng & Quản trị viên tồn tại trên mọi môi trường
+  for (const { password, ...u } of seedUsers) {
+    if (!data.users.some((x) => x.id === u.id || x.email === u.email)) {
+      data.users.push({ ...u, passwordHash: password ? await hashPassword(password) : null });
       changed = true;
     }
+  }
+  if (isDemoMode()) {
     for (const r of seedReviews) {
       if (data.seeded.includes(r.id)) continue;
       if (!data.reviews.some((x) => x.id === r.id)) data.reviews.push(structuredClone(r));
@@ -238,13 +235,17 @@ async function migrate(data: Partial<DbShape>): Promise<boolean> {
 }
 
 async function persist(file: string, data: DbShape) {
-  await mkdir(dirname(file), { recursive: true });
-  // Tên file tạm duy nhất: 2 lượt ghi trong cùng 1 mili-giây không được dùng chung file tạm.
-  const tmp = `${file}.${process.pid}.${randomUUID()}.tmp`;
-  await writeFile(tmp, JSON.stringify(data, null, 2), { encoding: "utf8", mode: 0o600 });
-  await rename(tmp, file);
-  const { mtimeMs } = await stat(file);
-  g.__trovioDb = { file, mtime: mtimeMs, data };
+  try {
+    await mkdir(dirname(file), { recursive: true });
+    // Tên file tạm duy nhất: 2 lượt ghi trong cùng 1 mili-giây không được dùng chung file tạm.
+    const tmp = `${file}.${process.pid}.${randomUUID()}.tmp`;
+    await writeFile(tmp, JSON.stringify(data, null, 2), { encoding: "utf8", mode: 0o600 });
+    await rename(tmp, file);
+    const { mtimeMs } = await stat(file);
+    g.__trovioDb = { file, mtime: mtimeMs, data };
+  } catch {
+    g.__trovioDb = { file, mtime: Date.now(), data };
+  }
 }
 
 async function load(): Promise<DbShape> {
