@@ -10,6 +10,7 @@ export const subjects: Subject[] = [
   { id: "dia", name: "Địa lý", short: "Địa" },
   { id: "anh", name: "Tiếng Anh", short: "Anh" },
   { id: "ve", name: "Vẽ mỹ thuật", short: "Vẽ" },
+  { id: "ve2", name: "Bố cục màu", short: "Bố cục" },
 ];
 
 export const combos: Combo[] = [
@@ -20,4 +21,7 @@ export const combos: Combo[] = [
   { code: "D01", subjects: ["toan", "van", "anh"] },
   { code: "D07", subjects: ["toan", "hoa", "anh"] },
   { code: "V00", subjects: ["toan", "ly", "ve"] },
+  { code: "H00", subjects: ["van", "ve", "ve2"] },
 ];
+
+

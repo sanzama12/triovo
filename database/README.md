@@ -1,30 +1,27 @@
-# Cơ sở dữ liệu Trovio (MongoDB Atlas & PostgreSQL)
+# Cơ sở dữ liệu Trovio (PostgreSQL & Neon Cloud)
 
 Hệ thống cơ sở dữ liệu Trovio được thiết kế và đồng bộ hoá toàn diện theo chuẩn **Bộ Giáo dục & Đào tạo (MOET)**.
-Toàn bộ dữ liệu web hoạt động trực tiếp trên **MongoDB Atlas** (hỗ trợ Serverless trên Vercel) đồng thời có lược đồ quan hệ **PostgreSQL 16** chuẩn hoá cao (3NF).
+Toàn bộ dữ liệu web hoạt động với lược đồ quan hệ **PostgreSQL 16+** chuẩn hoá cao (3NF) trên nền tảng **Neon PostgreSQL Serverless**.
 
 | Tệp / Database | Mô tả |
 | :--- | :--- |
-| **MongoDB Atlas** | Database đám mây chính thức của website (61 trường, 53 ngành, 212 chương trình đào tạo & điểm chuẩn, 60 câu hỏi RIASEC, 28 collections). |
+| **Neon PostgreSQL** | Database đám mây chính thức của website (61 trường, 53 ngành, 212 chương trình đào tạo & điểm chuẩn, 60 câu hỏi RIASEC, 79 bảng). |
 | `database/schema.sql` | 79 bảng, 4 view, 2 hàm nghiệp vụ, trigger kiểm tra dữ liệu (PostgreSQL schema `trovio`). |
 | `database/seed.sql` | Toàn bộ dữ liệu tuyển sinh, điểm chuẩn nhiều năm, trắc nghiệm RIASEC và tài khoản demo (kèm password băm scrypt). |
 | `database/seed-prod.sql` | Dữ liệu nạp môi trường Production (loại bỏ dữ liệu cộng đồng minh hoạ). |
 
 ```bash
-# 1. Đồng bộ và Cron toàn bộ dữ liệu vào MongoDB Atlas:
-npm run sync:moet
+# 1. Đẩy toàn bộ Schema và Dữ liệu lên Neon PostgreSQL:
+npm run push:pg
 
-# 2. Kiểm tra nhanh danh sách bảng và số lượng bản ghi trên MongoDB Atlas:
-npm run check:mongo
-
-# 3. Xuất toàn bộ dữ liệu ra file database/seed.sql và database/seed-prod.sql (PostgreSQL):
+# 2. Xuất toàn bộ dữ liệu ra file database/seed.sql và database/seed-prod.sql (PostgreSQL):
 npm run db:export
 
-# 4. Đồng bộ tất cả (cả MongoDB Atlas và PostgreSQL seeds):
-npm run db:sync
+# 3. Xuất và đẩy dữ liệu cùng lúc:
+npm run db:push
 ```
 
-Đã kiểm tra trên PostgreSQL 16: nạp không lỗi. `admission_score()` và `fit_level()` cho kết quả giống `scoring.service.ts` (VD 24 điểm, KV1 + UT1 → ưu tiên 2,20, tổng 26,20). `v_verification_progress` cho 2 / 47 / 3, khớp màn A01. Test `tests/sql-schema.test.ts` báo lỗi nếu code thêm giá trị mới mà SQL chưa cập nhật.
+Đã kiểm tra trên PostgreSQL 16+: nạp không lỗi. `admission_score()` và `fit_level()` cho kết quả giống `scoring.service.ts` (VD 24 điểm, KV1 + UT1 → ưu tiên 2,20, tổng 26,20). `v_verification_progress` cho 2 / 47 / 3, khớp màn A01. Test `tests/sql-schema.test.ts` báo lỗi nếu code thêm giá trị mới mà SQL chưa cập nhật.
 
 ## Nhóm bảng
 

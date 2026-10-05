@@ -33,19 +33,15 @@ async function main() {
   // Step 2: Run all unit tests
   run("npm run test", "Chạy toàn bộ 97 bài kiểm thử tự động (Unit Tests)", {
     NODE_ENV: "test",
-    MONGODB_URI: "",
-    TROVIO_REPO_DRIVER: "json",
   });
 
-  // Step 3: Sync official MOET data to MongoDB Atlas if available
-  if (process.env.MONGODB_URI) {
-    run("npm run sync:moet", "Đồng bộ dữ liệu chuẩn MOET lên MongoDB Atlas");
-  } else {
-    console.log(`\x1b[33m⚠ Bỏ qua sync MongoDB vì chưa thiết lập MONGODB_URI trong .env\x1b[0m`);
-  }
-
-  // Step 4: Export latest SQL schemas & seeds
+  // Step 3: Export latest SQL schemas & seeds
   run("npm run db:export", "Xuất file SQL seed mới nhất (database/seed.sql & seed-prod.sql)");
+
+  // Step 4: Push to Neon PostgreSQL if credentials available
+  if (process.env.DATABASE_URL || process.env.POSTGRES_URL) {
+    run("npm run push:pg", "Đẩy toàn bộ Schema và Dữ liệu lên Neon PostgreSQL");
+  }
 
   // Step 5: Git add, commit and push
   run("git add -A", "Thêm toàn bộ tệp thay đổi vào Git staging");
@@ -61,7 +57,7 @@ async function main() {
   console.log(`\n\x1b[32m🎉 ĐÃ SHIP THÀNH CÔNG!\x1b[0m`);
   console.log(`\x1b[36m- GitHub Actions:\x1b[0m Đang tự động kiểm tra pipeline`);
   console.log(`\x1b[36m- Vercel Deployment:\x1b[0m Đang tự động build và triển khai lên Production`);
-  console.log(`\x1b[36m- MongoDB Atlas:\x1b[0m Dữ liệu 100% đồng bộ chuẩn xác\n`);
+  console.log(`\x1b[36m- Neon PostgreSQL:\x1b[0m Dữ liệu 100% đồng bộ chuẩn xác\n`);
 }
 
 main().catch((err) => {

@@ -253,11 +253,12 @@ async function load(): Promise<DbShape> {
   const cached = g.__trovioDb;
   if (cached && cached.file === file && cached.data?.version === DB_VERSION) {
     try {
-      if ((await stat(file)).mtimeMs === cached.mtime) return cached.data;
+      if ((await stat(/*turbopackIgnore: true*/ file)).mtimeMs === cached.mtime) return cached.data;
     } catch {
       /* file bị xoá: đọc lại bên dưới */
     }
   }
+
   // Nhiều request cùng lúc (VD trang chủ gọi song song nhiều repository) → chỉ 1 lượt đọc/migrate/ghi.
   if (!g.__trovioDbLoading) {
     g.__trovioDbLoading = loadFromDisk(file).finally(() => {

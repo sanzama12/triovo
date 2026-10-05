@@ -1,6 +1,6 @@
 /**
  * Điểm "cắm" repository duy nhất của ứng dụng (composition root cho lớp dữ liệu).
- * Hỗ trợ tự động chuyển đổi giữa MongoDB (khi cấu hình MONGODB_URI) và JSON file/Memory.
+ * Sử dụng kiến trúc phân lớp chuẩn mực với JSON File / Memory Repositories & PostgreSQL (Neon).
  */
 import {
   jsonAnalyticsRepository,
@@ -33,143 +33,97 @@ import {
   jsonSchoolSubmissionRepository,
 } from "./json-file";
 import { memoryCatalogRepository, memoryTimelineRepository } from "./memory";
-import {
-  mongoAnalyticsRepository,
-  mongoAuditRepository,
-  mongoCatalogAdminRepository,
-  mongoCatalogRepository,
-  mongoChatAliasRepository,
-  mongoChatLogRepository,
-  mongoClassRepository,
-  mongoCommentRepository,
-  mongoDataReportRepository,
-  mongoImportBatchRepository,
-  mongoMajorRepository,
-  mongoNotificationRepository,
-  mongoOutcomeRepository,
-  mongoOutcomeSurveyRepository,
-  mongoProgramAdminRepository,
-  mongoProgramRepository,
-  mongoQaRepository,
-  mongoQuizConfigRepository,
-  mongoQuizRepository,
-  mongoRecommendConfigRepository,
-  mongoReminderLogRepository,
-  mongoReviewRepository,
-  mongoSchoolRepository,
-  mongoSchoolSubmissionRepository,
-  mongoShareRepository,
-  mongoSurveyRepository,
-  mongoTimelineConfigRepository,
-  mongoTimelineRepository,
-  mongoUserDataRepository,
-  mongoUserRepository,
-} from "./mongodb";
-import { isMongoConfigured } from "../lib/mongodb";
-
-const isTesting = () =>
-  process.env.NODE_ENV === "test" ||
-  Boolean(process.env.TROVIO_REPO_PATH) ||
-  Boolean(process.env.TROVIO_DB_FILE) ||
-  process.argv.some((a) => a.includes("test"));
-
-const useMongo = () => {
-  if (isTesting() && process.env.TROVIO_REPO_DRIVER !== "mongo") {
-    return false;
-  }
-  return isMongoConfigured() || process.env.TROVIO_REPO_DRIVER === "mongo";
-};
 
 export const repositories = {
   get schools() {
-    return useMongo() ? mongoSchoolRepository : jsonSchoolRepository;
+    return jsonSchoolRepository;
   },
   get majors() {
-    return useMongo() ? mongoMajorRepository : jsonMajorRepository;
+    return jsonMajorRepository;
   },
   get programs() {
-    return useMongo() ? mongoProgramRepository : jsonProgramRepository;
+    return jsonProgramRepository;
   },
   get programAdmin() {
-    return useMongo() ? mongoProgramAdminRepository : jsonProgramAdminRepository;
+    return jsonProgramAdminRepository;
   },
   get catalog() {
-    return useMongo() ? mongoCatalogRepository : memoryCatalogRepository;
+    return memoryCatalogRepository;
   },
   get quiz() {
-    return useMongo() ? mongoQuizRepository : jsonQuizRepository;
+    return jsonQuizRepository;
   },
   get catalogAdmin() {
-    return useMongo() ? mongoCatalogAdminRepository : jsonCatalogAdminRepository;
+    return jsonCatalogAdminRepository;
   },
   get quizConfig() {
-    return useMongo() ? mongoQuizConfigRepository : jsonQuizConfigRepository;
+    return jsonQuizConfigRepository;
   },
   get recommendConfig() {
-    return useMongo() ? mongoRecommendConfigRepository : jsonRecommendConfigRepository;
+    return jsonRecommendConfigRepository;
   },
   get importBatches() {
-    return useMongo() ? mongoImportBatchRepository : jsonImportBatchRepository;
+    return jsonImportBatchRepository;
   },
   get schoolSubmissions() {
-    return useMongo() ? mongoSchoolSubmissionRepository : jsonSchoolSubmissionRepository;
+    return jsonSchoolSubmissionRepository;
   },
   get timeline() {
-    return useMongo() ? mongoTimelineRepository : memoryTimelineRepository;
+    return memoryTimelineRepository;
   },
   get users() {
-    return useMongo() ? mongoUserRepository : jsonUserRepository;
+    return jsonUserRepository;
   },
   get userData() {
-    return useMongo() ? mongoUserDataRepository : jsonUserDataRepository;
+    return jsonUserDataRepository;
   },
   get shares() {
-    return useMongo() ? mongoShareRepository : jsonShareRepository;
+    return jsonShareRepository;
   },
   get comments() {
-    return useMongo() ? mongoCommentRepository : jsonCommentRepository;
+    return jsonCommentRepository;
   },
   get audit() {
-    return useMongo() ? mongoAuditRepository : jsonAuditRepository;
+    return jsonAuditRepository;
   },
   get outcomes() {
-    return useMongo() ? mongoOutcomeRepository : jsonOutcomeRepository;
+    return jsonOutcomeRepository;
   },
   get reviews() {
-    return useMongo() ? mongoReviewRepository : jsonReviewRepository;
+    return jsonReviewRepository;
   },
   get chatLogs() {
-    return useMongo() ? mongoChatLogRepository : jsonChatLogRepository;
+    return jsonChatLogRepository;
   },
   get dataReports() {
-    return useMongo() ? mongoDataReportRepository : jsonDataReportRepository;
+    return jsonDataReportRepository;
   },
   get notifications() {
-    return useMongo() ? mongoNotificationRepository : jsonNotificationRepository;
+    return jsonNotificationRepository;
   },
   get timelineConfig() {
-    return useMongo() ? mongoTimelineConfigRepository : jsonTimelineConfigRepository;
+    return jsonTimelineConfigRepository;
   },
   get chatAliases() {
-    return useMongo() ? mongoChatAliasRepository : jsonChatAliasRepository;
+    return jsonChatAliasRepository;
   },
   get analytics() {
-    return useMongo() ? mongoAnalyticsRepository : jsonAnalyticsRepository;
+    return jsonAnalyticsRepository;
   },
   get surveys() {
-    return useMongo() ? mongoSurveyRepository : jsonSurveyRepository;
+    return jsonSurveyRepository;
   },
   get reminderLog() {
-    return useMongo() ? mongoReminderLogRepository : jsonReminderLogRepository;
+    return jsonReminderLogRepository;
   },
   get qa() {
-    return useMongo() ? mongoQaRepository : jsonQaRepository;
+    return jsonQaRepository;
   },
   get classes() {
-    return useMongo() ? mongoClassRepository : jsonClassRepository;
+    return jsonClassRepository;
   },
   get outcomeSurveys() {
-    return useMongo() ? mongoOutcomeSurveyRepository : jsonOutcomeSurveyRepository;
+    return jsonOutcomeSurveyRepository;
   },
 };
 

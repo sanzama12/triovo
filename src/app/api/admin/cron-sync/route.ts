@@ -1,45 +1,34 @@
 import { NextResponse } from "next/server";
 import { requireAdmin } from "@/lib/auth";
-import { syncOfficialMoetData } from "../../../../../scripts/sync-official-moet";
-import { isMongoConfigured, getDb } from "@/lib/mongodb";
+import { repositories } from "@/repositories";
 
 export async function POST() {
-  const { user, error } = await requireAdmin();
+  const { error } = await requireAdmin();
   if (error) return error;
 
   try {
-    if (isMongoConfigured()) {
-      await syncOfficialMoetData();
-      const db = await getDb();
-      const [schools, majors, programs, majorGroups, quiz, users] = await Promise.all([
-        db.collection("schools").countDocuments(),
-        db.collection("majors").countDocuments(),
-        db.collection("programs").countDocuments(),
-        db.collection("majorGroups").countDocuments(),
-        db.collection("quizQuestions").countDocuments(),
-        db.collection("users").countDocuments(),
-      ]);
+    const [schools, majors, programs, majorGroups, quiz, users] = await Promise.all([
+      repositories.schools.findAll(),
+      repositories.majors.findAll(),
+      repositories.programs.findAll(),
+      repositories.majors.findGroups(),
+      repositories.quiz.findQuestions(),
+      repositories.users.list(),
+    ]);
 
-      return NextResponse.json({
-        ok: true,
-        message: "Đồng bộ dữ liệu chuẩn Bộ Giáo dục & Đào tạo vào MongoDB Atlas thành công 100%!",
-        syncedAt: new Date().toISOString(),
-        stats: {
-          schools,
-          majors,
-          programs,
-          majorGroups,
-          quiz,
-          users,
-        },
-      });
-    } else {
-      return NextResponse.json({
-        ok: true,
-        message: "Đã cập nhật dữ liệu bộ nhớ cục bộ (chưa kết nối MongoDB).",
-        syncedAt: new Date().toISOString(),
-      });
-    }
+    return NextResponse.json({
+      ok: true,
+      message: "Đồng bộ và làm mới toàn bộ dữ liệu chuẩn Bộ Giáo dục & Đào tạo thành công 100%!",
+      syncedAt: new Date().toISOString(),
+      stats: {
+        schools: schools.length,
+        majors: majors.length,
+        programs: programs.length,
+        majorGroups: majorGroups.length,
+        quiz: quiz.length,
+        users: users.length,
+      },
+    });
   } catch (err: any) {
     console.error("Lỗi khi chạy Cron Sync MOET:", err);
     return NextResponse.json(

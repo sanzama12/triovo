@@ -21,7 +21,7 @@ export function CronSyncButton() {
 
   const handleSync = async () => {
     if (loading) return;
-    const ok = window.confirm("Bạn có chắc chắn muốn chạy Cron đồng bộ toàn bộ dữ liệu chính thức từ Bộ GD&ĐT vào MongoDB Atlas không?");
+    const ok = window.confirm("Bạn có chắc chắn muốn chạy Cron làm mới và đồng bộ toàn bộ dữ liệu chính thức chuẩn Bộ GD&ĐT không?");
     if (!ok) return;
 
     setLoading(true);
@@ -56,11 +56,11 @@ export function CronSyncButton() {
               Đồng bộ dữ liệu chuẩn Bộ GD&ĐT (Cron MOET)
             </h3>
             <span className="rounded-full bg-primary-100 px-2.5 py-0.5 text-xs font-semibold text-primary-700">
-              MongoDB Atlas
+              PostgreSQL / Neon
             </span>
           </div>
           <p className="text-sm text-slate-600">
-            Tự động kiểm tra tính toàn vẹn, cập nhật 61 trường, 53 ngành, 87 chương trình tuyển sinh &amp; điểm chuẩn vào cơ sở dữ liệu đám mây.
+            Tự động kiểm tra tính toàn vẹn, cập nhật 61 trường, 53 ngành, 212 chương trình tuyển sinh &amp; điểm chuẩn vào cơ sở dữ liệu.
           </p>
         </div>
 

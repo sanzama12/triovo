@@ -1,5 +1,5 @@
 -- TỰ ĐỘNG SINH bởi scripts/export-sql.ts từ src/data + src/domain + src/services. Không sửa tay — chạy lại script.
--- Sinh lúc: 2026-10-05T10:11:35.651Z
+-- Sinh lúc: 2026-10-05T13:50:23.535Z
 BEGIN;
 SET search_path TO trovio, public;
 
@@ -37,7 +37,8 @@ INSERT INTO subjects (id, name, short_name) VALUES
   ('su', 'Lịch sử', 'Sử'),
   ('dia', 'Địa lý', 'Địa'),
   ('anh', 'Tiếng Anh', 'Anh'),
-  ('ve', 'Vẽ mỹ thuật', 'Vẽ');
+  ('ve', 'Vẽ mỹ thuật', 'Vẽ'),
+  ('ve2', 'Bố cục màu', 'Bố cục');
 
 INSERT INTO combos (code) VALUES
   ('A00'),
@@ -46,7 +47,8 @@ INSERT INTO combos (code) VALUES
   ('C00'),
   ('D01'),
   ('D07'),
-  ('V00');
+  ('V00'),
+  ('H00');
 
 INSERT INTO combo_subjects (combo_code, position, subject_id) VALUES
   ('A00', 1, 'toan'),
@@ -69,7 +71,10 @@ INSERT INTO combo_subjects (combo_code, position, subject_id) VALUES
   ('D07', 3, 'anh'),
   ('V00', 1, 'toan'),
   ('V00', 2, 'ly'),
-  ('V00', 3, 've');
+  ('V00', 3, 've'),
+  ('H00', 1, 'van'),
+  ('H00', 2, 've'),
+  ('H00', 3, 've2');
 
 INSERT INTO riasec_types (code, name_en, label, description, position) VALUES
   ('R', 'Realistic', 'Thực tế', 'Thích làm việc với công cụ, máy móc, kỹ thuật cơ khí, tự nhiên ngoài trời.', 1),
