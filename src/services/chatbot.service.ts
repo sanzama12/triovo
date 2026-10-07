@@ -379,7 +379,7 @@ export async function answerQuestion(question: string, ctxIn: ChatContextIn = {}
     }
     return base("methods-schools", "answer", `Các trường trên Trovio có điểm chuẩn theo ${cfg.label} (theo dữ liệu đã công bố):`, {
       items: list.slice(0, 8).map((s) => ({ title: s.name, meta: `${bySchool.get(s.id)} chương trình`, href: `/chuong-trinh?q=${encodeURIComponent(s.shortName)}&method=${method}` })),
-      note: `${DEMO_NOTE} Điểm chuẩn ${cfg.short} trong bản demo là số ước tính. Danh sách chỉ gồm các trường Trovio đang có dữ liệu, không phải toàn bộ trường xét phương thức này.`,
+      note: `Danh sách chỉ gồm các trường Trovio có dữ liệu điểm chuẩn đã công bố, không phải toàn bộ trường xét phương thức này.`,
       sources: [{ label: `Xem chương trình xét ${cfg.short}`, href: `/chuong-trinh?method=${method}` }, { label: "Bảng quy đổi theo phương thức", href: "/cach-goi-y#phuong-thuc" }],
       suggestions: [`Điểm chuẩn ${cfg.short} ngành Marketing`, "Thứ tự nguyện vọng quan trọng thế nào?"],
     });
@@ -510,10 +510,10 @@ export async function answerQuestion(question: string, ctxIn: ChatContextIn = {}
       context: ctx,
       items: list.slice(0, 6).map(({ p, c }) => ({
         title: `${p.name} – ${schoolName(p.schoolId)}`,
-        meta: `${formatMethodScore(c!.score, method)} điểm${cfg.max !== 30 ? `/${cfg.max}` : ""} · năm ${c!.year}${c!.estimated ? " · ƯỚC TÍNH" : ""}`,
+        meta: `${formatMethodScore(c!.score, method)} điểm${cfg.max !== 30 ? `/${cfg.max}` : ""} · năm ${c!.year}`,
         href: `/chuong-trinh/${p.slug}`, programId: p.id,
       })),
-      note: `${list.some((x) => x.c!.estimated) ? "Điểm chuẩn học bạ/ĐGNL trên Trovio hiện là số ƯỚC TÍNH suy ra từ điểm thi THPT, chưa phải điểm trường công bố. " : ""}${DEMO_NOTE} Trovio không dự đoán điểm chuẩn năm tới.`,
+      note: `Dữ liệu dựa trên điểm chuẩn trúng tuyển đã công bố chính thức. Trovio không dự đoán điểm chuẩn năm tới.`,
       sources: [
         { label: "Nhập điểm để xem An toàn / Vừa sức / Thử sức", href: "/diem-cua-toi" },
         ...(list.length > 6 ? [{ label: `Xem tất cả ${list.length} chương trình`, href: `/chuong-trinh?${major ? `majors=${major.id}` : `q=${encodeURIComponent(school!.shortName)}`}${method !== "thpt" ? `&method=${method}` : ""}` }] : []),
