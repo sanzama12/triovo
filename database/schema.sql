@@ -18,11 +18,10 @@
 
 BEGIN;
 
-CREATE SCHEMA IF NOT EXISTS trovio;
-SET search_path TO trovio, public;
+SET search_path TO public;
 
 -- Cập nhật cột updated_at tự động
-CREATE OR REPLACE FUNCTION trovio.touch_updated_at() RETURNS trigger LANGUAGE plpgsql AS $$
+CREATE OR REPLACE FUNCTION touch_updated_at() RETURNS trigger LANGUAGE plpgsql AS $$
 BEGIN
   NEW.updated_at := now();
   RETURN NEW;
@@ -276,10 +275,10 @@ CREATE TABLE program_cutoffs (
 CREATE INDEX program_cutoffs_year_idx ON program_cutoffs (method_code, year);
 
 -- Điểm chuẩn không vượt thang của phương thức (30 / 150 / 1200)
-CREATE OR REPLACE FUNCTION trovio.check_cutoff_scale() RETURNS trigger LANGUAGE plpgsql AS $$
+CREATE OR REPLACE FUNCTION check_cutoff_scale() RETURNS trigger LANGUAGE plpgsql AS $$
 DECLARE m NUMERIC;
 BEGIN
-  SELECT max_score INTO m FROM trovio.admission_methods WHERE code = NEW.method_code;
+  SELECT max_score INTO m FROM admission_methods WHERE code = NEW.method_code;
   IF NEW.score > m THEN
     RAISE EXCEPTION 'Điểm chuẩn % vượt thang % của phương thức %', NEW.score, m, NEW.method_code;
   END IF;
@@ -940,11 +939,11 @@ CREATE TABLE chat_aliases (
   UNIQUE (alias)
 );
 
-CREATE OR REPLACE FUNCTION trovio.check_chat_alias_target() RETURNS trigger LANGUAGE plpgsql AS $$
+CREATE OR REPLACE FUNCTION check_chat_alias_target() RETURNS trigger LANGUAGE plpgsql AS $$
 BEGIN
-  IF NEW.kind = 'major' AND NOT EXISTS (SELECT 1 FROM trovio.majors WHERE id = NEW.target_id) THEN
+  IF NEW.kind = 'major' AND NOT EXISTS (SELECT 1 FROM majors WHERE id = NEW.target_id) THEN
     RAISE EXCEPTION 'Ngành % không tồn tại', NEW.target_id;
-  ELSIF NEW.kind = 'school' AND NOT EXISTS (SELECT 1 FROM trovio.schools WHERE id = NEW.target_id) THEN
+  ELSIF NEW.kind = 'school' AND NOT EXISTS (SELECT 1 FROM schools WHERE id = NEW.target_id) THEN
     RAISE EXCEPTION 'Trường % không tồn tại', NEW.target_id;
   END IF;
   RETURN NEW;
@@ -996,13 +995,13 @@ CREATE TABLE sus_responses (
 -- =====================================================================================================
 
 -- computeAdmissionScore: tổng 3 môn + điểm ưu tiên; tổng ≥ 22,5 (quy đổi theo thang) → ưu tiên giảm dần
-CREATE OR REPLACE FUNCTION trovio.admission_score(p_raw NUMERIC, p_region TEXT, p_group TEXT, p_method TEXT DEFAULT 'thpt')
+CREATE OR REPLACE FUNCTION admission_score(p_raw NUMERIC, p_region TEXT, p_group TEXT, p_method TEXT DEFAULT 'thpt')
 RETURNS TABLE (raw_total NUMERIC, priority_points NUMERIC, priority_applied NUMERIC, total NUMERIC, reduced BOOLEAN)
 LANGUAGE sql STABLE AS $$
-  WITH m AS (SELECT max_score AS mx, factor AS f FROM trovio.admission_methods WHERE code = p_method),
+  WITH m AS (SELECT max_score AS mx, factor AS f FROM admission_methods WHERE code = p_method),
        p AS (
-         SELECT round(((SELECT points FROM trovio.priority_regions WHERE code = p_region)
-                     + (SELECT points FROM trovio.priority_groups WHERE code = p_group)) * m.f, 2) AS pts,
+         SELECT round(((SELECT points FROM priority_regions WHERE code = p_region)
+                     + (SELECT points FROM priority_groups WHERE code = p_group)) * m.f, 2) AS pts,
                 22.5 * m.f AS thr, m.mx
          FROM m)
   SELECT round(p_raw, 2),
@@ -1014,14 +1013,14 @@ LANGUAGE sql STABLE AS $$
 $$;
 
 -- fitLevelOf: An toàn (≥ +1), Vừa sức (≥ −0,5), Thử sức — quy đổi theo hệ số thang điểm
-CREATE OR REPLACE FUNCTION trovio.fit_level(p_user_score NUMERIC, p_cutoff NUMERIC, p_method TEXT DEFAULT 'thpt')
+CREATE OR REPLACE FUNCTION fit_level(p_user_score NUMERIC, p_cutoff NUMERIC, p_method TEXT DEFAULT 'thpt')
 RETURNS TEXT LANGUAGE sql STABLE AS $$
   SELECT CASE
            WHEN p_user_score - p_cutoff >= 1 * m.factor THEN 'an-toan'
            WHEN p_user_score - p_cutoff >= -0.5 * m.factor THEN 'vua-suc'
            ELSE 'thu-suc'
          END
-  FROM trovio.admission_methods m WHERE m.code = p_method;
+  FROM admission_methods m WHERE m.code = p_method;
 $$;
 
 -- Điểm chuẩn gần nhất của mỗi chương trình theo từng phương thức
@@ -1066,7 +1065,6 @@ JOIN v_public_programs vp ON vp.id = w.program_id;
 -- =====================================================================================================
 -- 13. CHÚ THÍCH BẢNG (hiện trong pgAdmin / DBeaver, dùng khi viết báo cáo)
 -- =====================================================================================================
-COMMENT ON SCHEMA trovio IS 'Trovio – hệ thống thông tin tuyển sinh & định hướng nghề nghiệp';
 COMMENT ON TABLE schools IS 'Trường đại học (A02). Xoá = tạm ẩn (hidden).';
 COMMENT ON TABLE majors IS 'Ngành đào tạo (A03), mã ngành 7 số, 3 nhóm Holland ở major_riasec.';
 COMMENT ON TABLE programs IS 'Chương trình đào tạo = ngành tại một trường (ERD cũ: truong_nganh).';
