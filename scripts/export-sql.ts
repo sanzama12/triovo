@@ -50,8 +50,7 @@ const ymd = (s: string) => s.slice(0, 10);
 
 async function main() {
   out.push("-- TỰ ĐỘNG SINH bởi scripts/export-sql.ts từ src/data + src/domain + src/services. Không sửa tay — chạy lại script.");
-  out.push(`-- Sinh lúc: ${new Date().toISOString()}`);
-  out.push("BEGIN;\nSET search_path TO trovio, public;");
+  out.push("BEGIN;\nSET search_path TO public;");
 
   section("1. Danh mục tham chiếu");
   insert("regions", ["code", "name"], Object.entries(REGION_LABELS).map(([k, v]) => [k, v]));

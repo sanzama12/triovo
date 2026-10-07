@@ -40,7 +40,7 @@ async function main() {
   console.log("✅ Nạp dữ liệu seed.sql thành công!");
 
   // 3. Verify counts in Neon PostgreSQL
-  console.log("\n📊 KIỂM TRA DỮ LIỆU ĐÃ NẠP VÀO POSTGRESQL (SCHEMA 'trovio'):");
+  console.log("\n📊 KIỂM TRA DỮ LIỆU ĐÃ NẠP VÀO POSTGRESQL (SCHEMA 'public'):");
   console.log("=================================================");
 
   const tablesToCheck = [
