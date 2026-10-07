@@ -44,7 +44,7 @@ import {
 } from "./json-file";
 import { memoryCatalogRepository, memoryTimelineRepository } from "./memory";
 
-const usePostgres = () => isDatabaseConfigured();
+const usePostgres = () => isDatabaseConfigured() && process.env.NODE_ENV !== "test";
 
 export const repositories = {
   get schools() {

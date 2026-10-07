@@ -11,6 +11,7 @@ type Seed = {
   major: string;
   code: string;
   cutoffs?: [number, number, number]; // 2025, 2024, 2023
+  altCutoffs?: MethodCutoff[];
   tuition: [number, number];
   combos: string[];
   quota: number;
@@ -65,8 +66,8 @@ const seeds: Seed[] = [
   // ============================================================================
   // 4. MIỀN BẮC – ĐẠI HỌC CÔNG NGHỆ – ĐHQGHN (uet)
   // ============================================================================
-  { school: "uet", major: "cong-nghe-thong-tin", code: "CN1", cutoffs: [27.95, 27.8, 27.85], tuition: [35, 42], combos: ["A00", "A01"], quota: 480 },
-  { school: "uet", major: "khoa-hoc-may-tinh", code: "CN8", cutoffs: [27.8, 27.65, 27.5], tuition: [35, 42], combos: ["A00", "A01"], quota: 240 },
+  { school: "uet", major: "cong-nghe-thong-tin", code: "CN1", cutoffs: [27.95, 27.8, 27.85], altCutoffs: [{ method: "dgnl-hn", year: 2025, score: 115 }, { method: "dgnl-hn", year: 2024, score: 112 }], tuition: [35, 42], combos: ["A00", "A01"], quota: 480 },
+  { school: "uet", major: "khoa-hoc-may-tinh", code: "CN8", cutoffs: [27.8, 27.65, 27.5], altCutoffs: [{ method: "dgnl-hn", year: 2025, score: 112 }], tuition: [35, 42], combos: ["A00", "A01"], quota: 240 },
   { school: "uet", major: "tri-tue-nhan-tao", code: "CN12", cutoffs: [27.6, 27.4, 27.25], tuition: [35, 42], combos: ["A00", "A01"], quota: 120 },
   { school: "uet", major: "ky-thuat-phan-mem", code: "CN2", cutoffs: [27.5, 27.3, 27.15], tuition: [35, 42], combos: ["A00", "A01"], quota: 200 },
   { school: "uet", major: "thiet-ke-vi-mach-ban-dan", code: "CN15", cutoffs: [27.2, 26.8, 26.5], tuition: [35, 42], combos: ["A00", "A01"], quota: 100 },
@@ -214,10 +215,10 @@ const seeds: Seed[] = [
   { school: "hcmut", major: "ky-thuat-o-to", code: "QSB-OTO", cutoffs: [26.7, 26.4, 26.2], tuition: [30, 38], combos: ["A00", "A01"], quota: 250 },
   { school: "hcmut", major: "ky-thuat-dien", code: "QSB-EE", cutoffs: [25.8, 25.5, 25.2], tuition: [30, 38], combos: ["A00", "A01"], quota: 350 },
   { school: "hcmut", major: "ky-thuat-hoa-hoc", code: "QSB-CH", cutoffs: [25.0, 24.8, 24.5], tuition: [30, 38], combos: ["A00", "D07"], quota: 300 },
-  { school: "hcmus", major: "khoa-hoc-may-tinh", code: "QST-CS", cutoffs: [28.1, 27.9, 27.6], tuition: [32, 40], combos: ["A00", "A01", "D07"], quota: 300 },
-  { school: "hcmus", major: "tri-tue-nhan-tao", code: "QST-AI", cutoffs: [27.8, 27.5, 27.2], tuition: [32, 40], combos: ["A00", "A01", "D07"], quota: 120 },
-  { school: "hcmus", major: "khoa-hoc-du-lieu", code: "QST-DS", cutoffs: [27.2, 27.0, 26.7], tuition: [32, 40], combos: ["A00", "A01", "D07"], quota: 150 },
-  { school: "hcmus", major: "cong-nghe-thong-tin", code: "QST-IT", cutoffs: [27.0, 26.8, 26.5], tuition: [32, 40], combos: ["A00", "A01", "D07"], quota: 400 },
+  { school: "hcmus", major: "khoa-hoc-may-tinh", code: "QST-CS", cutoffs: [28.1, 27.9, 27.6], altCutoffs: [{ method: "dgnl-hcm", year: 2025, score: 980 }, { method: "dgnl-hcm", year: 2024, score: 975 }], tuition: [32, 40], combos: ["A00", "A01", "D07"], quota: 300 },
+  { school: "hcmus", major: "tri-tue-nhan-tao", code: "QST-AI", cutoffs: [27.8, 27.5, 27.2], altCutoffs: [{ method: "dgnl-hcm", year: 2025, score: 960 }], tuition: [32, 40], combos: ["A00", "A01", "D07"], quota: 120 },
+  { school: "hcmus", major: "khoa-hoc-du-lieu", code: "QST-DS", cutoffs: [27.2, 27.0, 26.7], altCutoffs: [{ method: "dgnl-hcm", year: 2025, score: 910 }], tuition: [32, 40], combos: ["A00", "A01", "D07"], quota: 150 },
+  { school: "hcmus", major: "cong-nghe-thong-tin", code: "QST-IT", cutoffs: [27.0, 26.8, 26.5], altCutoffs: [{ method: "dgnl-hcm", year: 2025, score: 920 }], tuition: [32, 40], combos: ["A00", "A01", "D07"], quota: 400 },
   { school: "hcmus", major: "khoa-hoc-moi-truong", code: "QST-MT", cutoffs: [21.5, 21.0, 20.5], tuition: [26, 32], combos: ["A00", "B00", "D07"], quota: 150 },
   { school: "uit", major: "khoa-hoc-may-tinh", code: "QSC-CS", cutoffs: [27.8, 27.5, 27.2], tuition: [35, 42], combos: ["A00", "A01"], quota: 250 },
   { school: "uit", major: "ky-thuat-phan-mem", code: "QSC-SE", cutoffs: [27.6, 27.4, 27.1], tuition: [35, 42], combos: ["A00", "A01"], quota: 300 },
@@ -236,15 +237,15 @@ const seeds: Seed[] = [
   // ============================================================================
   // 13. MIỀN NAM – ĐẠI HỌC KINH TẾ TP.HCM (ueh)
   // ============================================================================
-  { school: "ueh", major: "marketing", code: "KSA05", cutoffs: [27.2, 27.0, 26.8], tuition: [32, 40], combos: ["A00", "A01", "D01", "D07"], quota: 280 },
-  { school: "ueh", major: "kinh-doanh-quoc-te", code: "KSA02", cutoffs: [27.4, 27.2, 27.0], tuition: [32, 40], combos: ["A00", "A01", "D01", "D07"], quota: 300 },
-  { school: "ueh", major: "logistics-quan-ly-chuoi-cung-ung", code: "KSA06", cutoffs: [27.3, 27.1, 26.9], tuition: [32, 40], combos: ["A00", "A01", "D01", "D07"], quota: 220 },
-  { school: "ueh", major: "thuong-mai-dien-tu", code: "KSA07", cutoffs: [27.0, 26.8, 26.6], tuition: [32, 40], combos: ["A00", "A01", "D01", "D07"], quota: 200 },
-  { school: "ueh", major: "quan-tri-kinh-doanh", code: "KSA01", cutoffs: [26.6, 26.4, 26.2], tuition: [32, 40], combos: ["A00", "A01", "D01", "D07"], quota: 400 },
-  { school: "ueh", major: "tai-chinh-ngan-hang", code: "KSA03", cutoffs: [26.4, 26.2, 26.0], tuition: [32, 40], combos: ["A00", "A01", "D01", "D07"], quota: 450 },
-  { school: "ueh", major: "kiem-toan", code: "KSA08", cutoffs: [26.7, 26.5, 26.3], tuition: [32, 40], combos: ["A00", "A01", "D01", "D07"], quota: 200 },
-  { school: "ueh", major: "ke-toan", code: "KSA04", cutoffs: [26.0, 25.8, 25.6], tuition: [32, 40], combos: ["A00", "A01", "D01", "D07"], quota: 350 },
-  { school: "ueh", major: "quan-tri-du-lich", code: "KSA09", cutoffs: [25.2, 25.0, 24.6], tuition: [32, 40], combos: ["A00", "A01", "D01", "D07"], quota: 150 },
+  { school: "ueh", major: "marketing", code: "KSA05", cutoffs: [27.2, 27.0, 26.8], altCutoffs: [{ method: "dgnl-hcm", year: 2025, score: 880 }, { method: "hocba", year: 2025, score: 28.5 }], tuition: [32, 40], combos: ["A00", "A01", "D01", "D07"], quota: 280 },
+  { school: "ueh", major: "kinh-doanh-quoc-te", code: "KSA02", cutoffs: [27.4, 27.2, 27.0], altCutoffs: [{ method: "dgnl-hcm", year: 2025, score: 890 }, { method: "hocba", year: 2025, score: 28.7 }], tuition: [32, 40], combos: ["A00", "A01", "D01", "D07"], quota: 300 },
+  { school: "ueh", major: "logistics-quan-ly-chuoi-cung-ung", code: "KSA06", cutoffs: [27.3, 27.1, 26.9], altCutoffs: [{ method: "dgnl-hcm", year: 2025, score: 885 }, { method: "hocba", year: 2025, score: 28.6 }], tuition: [32, 40], combos: ["A00", "A01", "D01", "D07"], quota: 220 },
+  { school: "ueh", major: "thuong-mai-dien-tu", code: "KSA07", cutoffs: [27.0, 26.8, 26.6], altCutoffs: [{ method: "dgnl-hcm", year: 2025, score: 870 }, { method: "hocba", year: 2025, score: 28.2 }], tuition: [32, 40], combos: ["A00", "A01", "D01", "D07"], quota: 200 },
+  { school: "ueh", major: "quan-tri-kinh-doanh", code: "KSA01", cutoffs: [26.6, 26.4, 26.2], altCutoffs: [{ method: "dgnl-hcm", year: 2025, score: 855 }, { method: "hocba", year: 2025, score: 27.8 }], tuition: [32, 40], combos: ["A00", "A01", "D01", "D07"], quota: 400 },
+  { school: "ueh", major: "tai-chinh-ngan-hang", code: "KSA03", cutoffs: [26.4, 26.2, 26.0], altCutoffs: [{ method: "dgnl-hcm", year: 2025, score: 850 }, { method: "hocba", year: 2025, score: 27.5 }], tuition: [32, 40], combos: ["A00", "A01", "D01", "D07"], quota: 450 },
+  { school: "ueh", major: "kiem-toan", code: "KSA08", cutoffs: [26.7, 26.5, 26.3], altCutoffs: [{ method: "dgnl-hcm", year: 2025, score: 860 }, { method: "hocba", year: 2025, score: 27.9 }], tuition: [32, 40], combos: ["A00", "A01", "D01", "D07"], quota: 200 },
+  { school: "ueh", major: "ke-toan", code: "KSA04", cutoffs: [26.0, 25.8, 25.6], altCutoffs: [{ method: "dgnl-hcm", year: 2025, score: 835 }, { method: "hocba", year: 2025, score: 27.2 }], tuition: [32, 40], combos: ["A00", "A01", "D01", "D07"], quota: 350 },
+  { school: "ueh", major: "quan-tri-du-lich", code: "KSA09", cutoffs: [25.2, 25.0, 24.6], altCutoffs: [{ method: "dgnl-hcm", year: 2025, score: 810 }, { method: "hocba", year: 2025, score: 26.8 }], tuition: [32, 40], combos: ["A00", "A01", "D01", "D07"], quota: 150 },
 
   // ============================================================================
   // 14. MIỀN NAM – Y DƯỢC TP.HCM (ump) & PHẠM NGỌC THẠCH (pntu)
@@ -277,10 +278,10 @@ const seeds: Seed[] = [
   // ============================================================================
   // 16. MIỀN NAM – TÔN ĐỨC THẮNG (tdtu), CÔNG NGHIỆP TP.HCM (iuh), CẦN THƠ (ctu)
   // ============================================================================
-  { school: "tdtu", major: "cong-nghe-thong-tin", code: "DTT01", cutoffs: [26.5, 26.2, 26.0], tuition: [28, 36], combos: ["A00", "A01"], quota: 450 },
-  { school: "tdtu", major: "thiet-ke-do-hoa", code: "DTT04", cutoffs: [26.0, 25.8, 25.5], tuition: [30, 38], combos: ["V00", "A01", "D01"], quota: 200 },
-  { school: "tdtu", major: "marketing", code: "DTT02", cutoffs: [26.4, 26.2, 26.0], tuition: [28, 36], combos: ["A00", "A01", "D01", "D07"], quota: 300 },
-  { school: "tdtu", major: "luat", code: "DTT03", cutoffs: [25.5, 25.2, 25.0], tuition: [28, 36], combos: ["A00", "A01", "C00", "D01"], quota: 250 },
+  { school: "tdtu", major: "cong-nghe-thong-tin", code: "DTT01", cutoffs: [26.5, 26.2, 26.0], altCutoffs: [{ method: "hocba", year: 2025, score: 28.5 }, { method: "dgnl-hcm", year: 2025, score: 820 }], tuition: [28, 36], combos: ["A00", "A01"], quota: 450 },
+  { school: "tdtu", major: "thiet-ke-do-hoa", code: "DTT04", cutoffs: [26.0, 25.8, 25.5], altCutoffs: [{ method: "hocba", year: 2025, score: 27.5 }], tuition: [30, 38], combos: ["V00", "A01", "D01"], quota: 200 },
+  { school: "tdtu", major: "marketing", code: "DTT02", cutoffs: [26.4, 26.2, 26.0], altCutoffs: [{ method: "hocba", year: 2025, score: 28.2 }], tuition: [28, 36], combos: ["A00", "A01", "D01", "D07"], quota: 300 },
+  { school: "tdtu", major: "luat", code: "DTT03", cutoffs: [25.5, 25.2, 25.0], altCutoffs: [{ method: "hocba", year: 2025, score: 27.0 }], tuition: [28, 36], combos: ["A00", "A01", "C00", "D01"], quota: 250 },
   { school: "iuh", major: "cong-nghe-thong-tin", code: "HUI01", cutoffs: [24.8, 24.5, 24.2], tuition: [24, 30], combos: ["A00", "A01", "D01"], quota: 600 },
   { school: "iuh", major: "ky-thuat-o-to", code: "HUI02", cutoffs: [24.5, 24.2, 24.0], tuition: [24, 30], combos: ["A00", "A01"], quota: 500 },
   { school: "iuh", major: "cong-nghe-thuc-pham", code: "HUI03", cutoffs: [23.2, 23.0, 22.8], tuition: [24, 30], combos: ["A00", "B00", "D07"], quota: 400 },
@@ -318,28 +319,8 @@ const seeds: Seed[] = [
   { school: "cd-tdc", major: "cong-nghe-thong-tin", code: "CD-TDC01", cutoffs: [15.0, 15.0, 15.0], tuition: [16, 20], combos: ["A00", "A01", "D01"], quota: 450, years: 3 },
 ];
 
-/**
- * Các trường có áp dụng xét tuyển học bạ hoặc ĐGNL (ĐHQGHN HSA / ĐHQG TP.HCM).
- */
-const HOCBA_SCHOOLS = new Set(["tdtu", "ueh", "ctu", "vnua", "dut", "hup", "hutech", "vlu-sg", "hsu", "phenikaa", "fpt"]);
-const DGNL_HN_SCHOOLS = new Set(["uet", "ussh", "ftu", "neu", "vnua", "hup", "hust", "ptit", "tmu", "aof", "bav"]);
-const DGNL_HCM_SCHOOLS = new Set(["ueh", "hcmus", "hcmut", "uit", "uel", "iu", "tdtu", "ctu", "dut", "iuh", "hcmute", "nlu"]);
-const clamp = (n: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, n));
-
 const altCutoffsOf = (s: Seed): MethodCutoff[] => {
-  if (!s.cutoffs) return [];
-  const t = s.cutoffs[0];
-  const out: MethodCutoff[] = [];
-  if (HOCBA_SCHOOLS.has(s.school)) {
-    out.push({ method: "hocba", year: 2025, score: Math.round(Math.min(29.9, t + 1.2) * 100) / 100, estimated: true });
-  }
-  if (DGNL_HN_SCHOOLS.has(s.school)) {
-    out.push({ method: "dgnl-hn", year: 2025, score: Math.round(clamp(55 + (t - 15) * 4.6, 60, 135)), estimated: true });
-  }
-  if (DGNL_HCM_SCHOOLS.has(s.school)) {
-    out.push({ method: "dgnl-hcm", year: 2025, score: Math.round(clamp(520 + (t - 15) * 33, 550, 1080)), estimated: true });
-  }
-  return out;
+  return s.altCutoffs ?? [];
 };
 
 export const competitionOf = (cutoff: number | undefined, quota: number): Competition => {

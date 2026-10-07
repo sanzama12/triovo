@@ -308,13 +308,12 @@ test("chi phí: tính theo năm, tăng học phí, học bổng, chặn giá tr�
   assert.equal(formatMillion(31.5), "31,5 triệu");
 });
 
-test("điểm chuẩn học bạ / ĐGNL được gắn cờ ước tính, THPT thì không", async () => {
+test("điểm chuẩn là điểm chuẩn thật và không bị gắn cờ ước tính", async () => {
   const p = await must(repositories.programs.findById("ueh-marketing"));
   assert.equal(cutoffFor(p, "thpt")?.estimated, undefined);
-  assert.equal(cutoffFor(p, "hocba")?.estimated, true);
-  assert.equal(cutoffFor(p, "dgnl-hcm")?.estimated, true);
-  // Mọi điểm chuẩn phương thức khác trong dữ liệu mẫu đều là ước tính.
-  for (const x of await repositories.programs.findAll()) for (const c of x.altCutoffs ?? []) assert.equal(c.estimated, true, x.id);
+  assert.equal(cutoffFor(p, "hocba")?.estimated, undefined);
+  assert.equal(cutoffFor(p, "dgnl-hcm")?.estimated, undefined);
+  for (const x of await repositories.programs.findAll()) for (const c of x.altCutoffs ?? []) assert.equal(c.estimated, undefined, x.id);
 });
 
 test("cảm nhận: lọc theo ngành & khoá, danh sách lựa chọn chỉ gồm giá trị có dữ liệu", async () => {

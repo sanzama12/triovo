@@ -8,7 +8,6 @@ import { buttonClass } from "@/components/ui/button";
 import { FilterPanel } from "@/components/search/filter-panel";
 import { ProgramCard } from "@/components/program/program-card";
 import { SavedScoreHint } from "@/components/search/saved-score-hint";
-import { EstimatedTag } from "@/components/ui/estimated-tag";
 
 export const metadata: Metadata = { title: "Tìm chương trình đào tạo" };
 
@@ -55,14 +54,6 @@ export default async function SearchPage({ searchParams }: Props) {
         </div>
 
         <section aria-label="Kết quả tìm kiếm">
-          {filters.method && filters.method !== "thpt" && (
-            <p role="note" className="mb-4 flex items-start gap-2 rounded-xl border border-accent-200 bg-accent-50 px-4 py-3 text-[13px] text-slate-700">
-              <EstimatedTag className="mt-0.5 shrink-0" />
-              <span>
-                Điểm chuẩn học bạ / đánh giá năng lực trong bản demo là <strong>số ước tính</strong> suy ra từ điểm thi THPT, chưa phải điểm trường công bố. Chỉ dùng để thử tính năng — hãy đối chiếu đề án tuyển sinh của trường.
-              </span>
-            </p>
-          )}
           <div className="mb-4 flex flex-wrap items-center gap-2" role="tablist" aria-label="Sắp xếp">
             {(Object.keys(SORT_LABELS) as ProgramSort[]).map((k) => (
               <Link
