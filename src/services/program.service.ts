@@ -92,7 +92,14 @@ function applyFilters(views: ProgramView[], f: ProgramFilters): ProgramView[] {
 }
 
 function sortViews(views: ProgramView[], sort: ProgramSort, score?: number): ProgramView[] {
-  const byCutoffDesc = (a: ProgramView, b: ProgramView) => (b.latestCutoff ?? -1) - (a.latestCutoff ?? -1);
+  const effectiveCutoff = (v: ProgramView) => {
+    if (v.latestCutoff == null) return -1;
+    if (v.cutoffMethod === "thpt" && v.latestCutoff > 30) {
+      return (v.latestCutoff * 30) / 40;
+    }
+    return v.latestCutoff;
+  };
+  const byCutoffDesc = (a: ProgramView, b: ProgramView) => effectiveCutoff(b) - effectiveCutoff(a);
   const copy = [...views];
   switch (sort) {
     case "diem-giam":

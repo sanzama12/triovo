@@ -1,7 +1,17 @@
 /**
  * Điểm "cắm" repository duy nhất của ứng dụng (composition root cho lớp dữ liệu).
- * Sử dụng kiến trúc phân lớp chuẩn mực với JSON File / Memory Repositories & PostgreSQL (Neon).
+ * Tự động chuyển đổi mượt mà giữa PostgreSQL (Neon Cloud CSDL khi chạy trên Tên miền / Production)
+ * và JSON-File / Memory (khi chạy local/unit test).
  */
+import { isDatabaseConfigured } from "../lib/db";
+import {
+  postgresSchoolRepository,
+  postgresMajorRepository,
+  postgresProgramRepository,
+  postgresQuizRepository,
+  postgresOutcomeRepository,
+  postgresCatalogAdminRepository,
+} from "./postgres";
 import {
   jsonAnalyticsRepository,
   jsonChatAliasRepository,
@@ -34,15 +44,17 @@ import {
 } from "./json-file";
 import { memoryCatalogRepository, memoryTimelineRepository } from "./memory";
 
+const usePostgres = () => isDatabaseConfigured();
+
 export const repositories = {
   get schools() {
-    return jsonSchoolRepository;
+    return usePostgres() ? postgresSchoolRepository : jsonSchoolRepository;
   },
   get majors() {
-    return jsonMajorRepository;
+    return usePostgres() ? postgresMajorRepository : jsonMajorRepository;
   },
   get programs() {
-    return jsonProgramRepository;
+    return usePostgres() ? postgresProgramRepository : jsonProgramRepository;
   },
   get programAdmin() {
     return jsonProgramAdminRepository;
@@ -51,10 +63,10 @@ export const repositories = {
     return memoryCatalogRepository;
   },
   get quiz() {
-    return jsonQuizRepository;
+    return usePostgres() ? postgresQuizRepository : jsonQuizRepository;
   },
   get catalogAdmin() {
-    return jsonCatalogAdminRepository;
+    return usePostgres() ? postgresCatalogAdminRepository : jsonCatalogAdminRepository;
   },
   get quizConfig() {
     return jsonQuizConfigRepository;
@@ -87,7 +99,7 @@ export const repositories = {
     return jsonAuditRepository;
   },
   get outcomes() {
-    return jsonOutcomeRepository;
+    return usePostgres() ? postgresOutcomeRepository : jsonOutcomeRepository;
   },
   get reviews() {
     return jsonReviewRepository;

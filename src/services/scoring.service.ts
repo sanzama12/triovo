@@ -115,6 +115,20 @@ export const FIT_LABELS: Record<FitLevel, string> = {
 
 type CutoffSource = Pick<Program, "cutoffs"> & Partial<Pick<Program, "altCutoffs">>;
 
+/** Kiểm tra xem điểm chuẩn THPT có theo thang 40 (môn chính nhân đôi) hay không. */
+export function isScale40(score: number | null | undefined, method: AdmissionMethodKey = "thpt"): boolean {
+  return method === "thpt" && score != null && Number.isFinite(score) && score > 30;
+}
+
+/** Quy đổi điểm chuẩn về thang chuẩn 30 nếu là ngành nhân hệ số thang 40. */
+export function normalizeCutoff(score: number | null | undefined, method: AdmissionMethodKey = "thpt"): number | null {
+  if (score == null || !Number.isFinite(score)) return null;
+  if (isScale40(score, method)) {
+    return round2((score * 30) / 40);
+  }
+  return score;
+}
+
 /** Điểm chuẩn gần nhất của chương trình theo phương thức (null nếu không xét phương thức đó). */
 export function cutoffFor(program: CutoffSource, method: AdmissionMethodKey = "thpt"): { year: number; score: number; estimated?: boolean } | null {
   if (method === "thpt") return program.cutoffs[0] ?? null;
@@ -142,15 +156,22 @@ export function computeFit(userScore: number | null | undefined, program: Cutoff
   const cut = cutoffFor(program, method);
   if (!cut) return null;
   const d = ADMISSION_METHODS[method].decimals;
-  const diff = round2(userScore - cut.score);
+
+  // Nếu ngành xét điểm THPT thang 40 (môn chính nhân 2), quy đổi điểm chuẩn về thang 30 để so sánh với điểm thi thang 30 của thí sinh
+  const scale40 = isScale40(cut.score, method);
+  const effectiveCutoff = scale40 ? (cut.score * 30) / 40 : cut.score;
+
+  const diff = round2(userScore - effectiveCutoff);
   const level = fitLevelOf(diff, method);
-  const unit = ADMISSION_METHODS[method].short;
+  const unit = scale40 ? "điểm quy đổi (thang 30)" : ADMISSION_METHODS[method].short;
+  const scale40Note = scale40 ? ` (Điểm chuẩn gốc: ${cut.score.toFixed(d)} thang 40)` : "";
+
   const hint =
     level === "an-toan"
-      ? `Cao hơn điểm chuẩn ${cut.year} ${diff.toFixed(d)} điểm (${unit}).`
+      ? `Cao hơn điểm chuẩn ${cut.year} ${diff.toFixed(d)} điểm (${unit})${scale40Note}.`
       : level === "vua-suc"
-        ? `Sát điểm chuẩn ${cut.year} (${diff >= 0 ? "+" : ""}${diff.toFixed(d)} điểm, ${unit}).`
-        : `Thấp hơn điểm chuẩn ${cut.year} ${Math.abs(diff).toFixed(d)} điểm (${unit}).`;
+        ? `Sát điểm chuẩn ${cut.year} (${diff >= 0 ? "+" : ""}${diff.toFixed(d)} điểm, ${unit})${scale40Note}.`
+        : `Thấp hơn điểm chuẩn ${cut.year} ${Math.abs(diff).toFixed(d)} điểm (${unit})${scale40Note}.`;
   return { level, label: FIT_LABELS[level], diff, hint };
 }
 
@@ -188,5 +209,8 @@ export function fitForProfile(profile: ProfileLike, program: CutoffSource & Pick
 export function pointsToSafe(userScore: number, program: CutoffSource, method: AdmissionMethodKey = "thpt"): number | null {
   const cut = cutoffFor(program, method);
   if (!cut) return null;
-  return Math.max(0, round2(cut.score + FIT_THRESHOLDS.safe * ADMISSION_METHODS[method].factor - userScore));
+  const scale40 = isScale40(cut.score, method);
+  const effectiveCutoff = scale40 ? (cut.score * 30) / 40 : cut.score;
+  return Math.max(0, round2(effectiveCutoff + FIT_THRESHOLDS.safe * ADMISSION_METHODS[method].factor - userScore));
 }
+

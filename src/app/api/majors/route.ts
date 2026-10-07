@@ -8,5 +8,12 @@ export async function GET(req: NextRequest) {
     q: sp.get("q") ?? undefined,
     letter: sp.get("letter") ?? undefined,
   });
-  return NextResponse.json({ items });
+  return NextResponse.json(
+    { items },
+    {
+      headers: {
+        "Cache-Control": "public, max-age=60, s-maxage=300, stale-while-revalidate=86400",
+      },
+    }
+  );
 }

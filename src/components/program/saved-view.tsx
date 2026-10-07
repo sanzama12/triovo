@@ -43,7 +43,10 @@ export function SavedView() {
   /** Điểm chuẩn hiển thị theo phương thức của hồ sơ điểm (mặc định điểm thi THPT). */
   const cutoffText = (v: ProgramView) => {
     const c = cutoffFor(v.program, method);
-    if (c) return `${formatMethodScore(c.score, method)}${method !== "thpt" ? ` ${ADMISSION_METHODS[method].short}` : ""}${c.estimated ? " (ước tính)" : ""}`;
+    if (c) {
+      const scale40 = method === "thpt" && c.score > 30;
+      return `${formatMethodScore(c.score, method)}${scale40 ? " (thang 40)" : ""}${method !== "thpt" ? ` ${ADMISSION_METHODS[method].short}` : ""}${c.estimated ? " (ước tính)" : ""}`;
+    }
     return method === "thpt" ? "Xét học bạ" : `Không xét ${ADMISSION_METHODS[method].short}`;
   };
   const toStrategy = (v: ProgramView): StrategyItem => ({ id: v.program.id, label: `${v.program.name} – ${v.school.shortName}`, program: v.program });

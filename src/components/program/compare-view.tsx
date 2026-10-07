@@ -50,7 +50,7 @@ export function CompareView() {
     { label: "Trường / Cơ sở", value: (v) => v.program.campus, raw: (v) => v.program.campus },
     ...[0, 1, 2].map<Row>((i) => ({
       label: `Điểm chuẩn ${2025 - i}`,
-      value: (v) => (cut(v, i) ? <strong className={i === 0 ? "text-primary-700" : ""}>{formatScore(cut(v, i).score)}</strong> : "Xét học bạ"),
+      value: (v) => (cut(v, i) ? <strong className={i === 0 ? "text-primary-700" : ""}>{formatScore(cut(v, i).score)}{cut(v, i).score > 30 ? " (thang 40)" : ""}</strong> : "Xét học bạ"),
       raw: (v) => String(cut(v, i)?.score ?? "-"),
     })),
     ...altKeys.map<Row>((k) => ({

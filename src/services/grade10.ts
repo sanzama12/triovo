@@ -34,7 +34,10 @@ export const ELECTIVE_SUBJECTS: G10Subject[] = [
 
 export const ELECTIVE_COUNT = 4;
 /** Môn năng khiếu thi riêng, không phụ thuộc môn lựa chọn ở lớp 10. */
-export const APTITUDE_SUBJECTS: Record<string, string> = { ve: "Vẽ mỹ thuật (thi năng khiếu)" };
+export const APTITUDE_SUBJECTS: Record<string, string> = {
+  ve: "Vẽ mỹ thuật (thi năng khiếu)",
+  ve2: "Bố cục màu (thi năng khiếu)",
+};
 
 const CORE_IDS = new Set(CORE_SUBJECTS.map((s) => s.id));
 export const subjectName = (id: string) => CORE_SUBJECTS.find((s) => s.id === id)?.name ?? ELECTIVE_SUBJECTS.find((s) => s.id === id)?.name ?? APTITUDE_SUBJECTS[id] ?? id;

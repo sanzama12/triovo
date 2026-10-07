@@ -321,13 +321,19 @@ export default async function ProgramDetailPage({ params }: Props) {
 function MethodRequirement({ program, methodKey }: { program: Pick<Program, "cutoffs" | "altCutoffs">; methodKey: AdmissionMethodKey }) {
   const cut = cutoffFor(program, methodKey);
   if (!cut) return <>Chưa có điểm chuẩn</>;
+  const isThpt40 = methodKey === "thpt" && cut.score > 30;
   return (
     <>
       Điểm chuẩn {cut.year}:{" "}
       <strong className="text-slate-800">
         {formatMethodScore(cut.score, methodKey)} điểm
-        {ADMISSION_METHODS[methodKey].max !== 30 ? ` / ${ADMISSION_METHODS[methodKey].max}` : ""}
+        {isThpt40 ? " (Thang 40 · Môn chính ×2)" : ADMISSION_METHODS[methodKey].max !== 30 ? ` / ${ADMISSION_METHODS[methodKey].max}` : ""}
       </strong>
+      {isThpt40 && (
+        <span className="ml-2 inline-block rounded-md bg-primary-50 px-2 py-0.5 text-xs font-semibold text-primary-700 border border-primary-200">
+          Quy đổi thang 30: {((cut.score * 30) / 40).toFixed(2)} điểm
+        </span>
+      )}
       {cut.estimated && <EstimatedTag className="ml-1.5 align-middle" />}
     </>
   );
